@@ -200,789 +200,97 @@ footer{
 
   <div class="sigil" id="sigilText">⟡</div>
 </header>
-  :root{
-  --bg:#020003;
-  --fg:#f3eaea;
-  --muted:#b7a7ad;
-  --red:#9b0018;
-  --line:#2a0010;
-}
 
-body{
-  margin:0;
-  background:
-    radial-gradient(circle at 50% 30%, #1a0008, #020003 65%),
-    radial-gradient(circle at 10% 80%, rgba(155,0,24,0.2), transparent 60%);
-  color:var(--fg);
-  font-family:"Courier New", monospace;
-  overflow-x:hidden;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    repeating-radial-gradient(circle at 40% 40%,
-      rgba(155,0,24,0.06) 0px,
-      transparent 4px,
-      transparent 12px);
-  opacity:0.35;
-  filter: blur(1px);
-  pointer-events:none;
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  inset:-40%;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(155,0,24,0.25), transparent 55%),
-    radial-gradient(circle at 80% 60%, rgba(40,0,10,0.6), transparent 60%),
-    radial-gradient(circle at 50% 90%, rgba(10,0,5,0.9), transparent 70%);
-  filter: blur(80px);
-  opacity:0.85;
-  pointer-events:none;
-  mix-blend-mode: screen;
-  animation: drift 18s infinite linear;
-}
-
-@keyframes drift{
-  0%{transform:translate(0,0);}
-  50%{transform:translate(-2%,2%);}
-  100%{transform:translate(0,0);}
-}
-
-header{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  border-bottom:1px solid var(--line);
-  position:relative;
-}
-
-.title{
-  font-size:2.2rem;
-  letter-spacing:0.9em;
-  animation:flicker 5s infinite;
-}
-
-.sub{
-  margin-top:20px;
-  max-width:700px;
-  font-size:0.72rem;
-  color:var(--muted);
-  letter-spacing:0.3em;
-  line-height:1.8;
-}
-
-.boot{
-  margin-top:30px;
-  font-size:0.65rem;
-  color:var(--red);
-  letter-spacing:0.35em;
-}
-
-.sigil{
-  margin-top:50px;
-  font-size:4rem;
-  color:rgba(155,0,24,0.3);
-  text-shadow:0 0 25px rgba(155,0,24,0.3);
-  transition:0.3s;
-}
-
-section{
-  padding:140px 24px;
-  max-width:920px;
-  margin:auto;
-  border-bottom:1px solid var(--line);
-}
-
-h2{
-  font-size:0.75rem;
-  letter-spacing:0.7em;
-  margin-bottom:26px;
-}
-
-p{
-  color:var(--muted);
-  line-height:2;
-  font-size:0.9rem;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
-  gap:14px;
-  margin-top:35px;
-}
-
-.node{
-  border:1px solid rgba(155,0,24,0.25);
-  min-height:110px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:0.7rem;
-  letter-spacing:0.4em;
-  background:rgba(5,0,3,0.45);
-  backdrop-filter: blur(12px);
-  transition:0.25s;
-}
-
-.node:hover{
-  border-color:var(--red);
-  color:var(--red);
-  text-shadow:0 0 14px rgba(155,0,24,0.8);
-  transform:scale(1.03);
-}
-
-.book{
-  margin-top:35px;
-  display:flex;
-  gap:20px;
-  align-items:center;
-  border:1px solid rgba(155,0,24,0.25);
-  padding:16px;
-  background:rgba(5,0,3,0.45);
-}
-
-.book img{
-  width:120px;
-  height:auto;
-  border:1px solid var(--line);
-}
-
-.book a{
-  color:var(--red);
-  text-decoration:none;
-  font-size:0.75rem;
-  letter-spacing:0.2em;
-}
-
-.book a:hover{
-  text-shadow:0 0 10px rgba(155,0,24,0.8);
-}
-
-@keyframes flicker{
-  0%,100%{opacity:1;}
-  50%{opacity:0.82;}
-}
-
-footer{
-  padding:60px 20px;
-  text-align:center;
-  font-size:0.6rem;
-  letter-spacing:0.3em;
-  color:var(--muted);
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="title">BLACK SIGNAL SURVEILLANCE INSTITUTE</div>
-  <div class="sub">
-    ARCHIVAL REPOSITORY / HISTORICAL DEMONOLOGY TEXTS / BIBLIOGRAPHIC INDEX SYSTEM
-  </div>
-
-  <div class="boot">SYSTEM BOOT: archival mode initialized</div>
-
-  <div class="sigil" id="sigilText">⟡</div>
-</header>
- <section>
+<section>
   <h2>ARCHIVE ENTRY 0005 — THE TEXT OF ALCHEMY AND THE GREEN DREAM</h2>
 
   <p>
     The Text of Alchemy and the Green Dream is an alchemical treatise preserved
     within the Western hermetic tradition and traditionally associated with
-    Bernard of Treviso. The work combines direct discussion of alchemical
-    principles with a visionary allegorical narrative in which symbolic figures,
-    crystalline architecture, and enigmatic names serve as vehicles for
-    communicating concealed philosophical concepts.
+    Bernard of Treviso.
   </p>
 
   <p>
-    The text is notable for its dual structure. The first portion discusses the
-    nature of transformation, perfection, and the Philosopher's Stone, while
-    the Green Dream presents these themes through a symbolic dream vision.
-    Because of its layered imagery, the work has been interpreted as a guide
-    to laboratory alchemy, a spiritual allegory, and a philosophical meditation
-    on the hidden operations of nature.
+    The Green Dream is interpreted as a symbolic vision narrative blending
+    alchemical transformation and allegorical imagery.
   </p>
 
   <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/411SBQILnsL._SY445_SX342_ML2_.jpg"
-         alt="The Text of Alchemy and the Green Dream cover"/>
-
+    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/411SBQILnsL._SY445_SX342_ML2_.jpg"/>
     <div>
-      <div style="
-        margin-bottom:10px;
-        font-size:0.7rem;
-        letter-spacing:0.2em;
-        color:var(--muted);
-      ">
+      <div style="margin-bottom:10px;font-size:0.7rem;letter-spacing:0.2em;color:var(--muted);">
         FULL TEXT ARCHIVE
       </div>
-
       <a href="https://www.alchemy-texts.com/book/the-text-of-alchemy-and-the-green-dream-full/"
-         target="_blank"
-         rel="noopener noreferrer">
-        OPEN TEXT ARCHIVE
-      </a>
+         target="_blank">OPEN TEXT ARCHIVE</a>
     </div>
   </div>
 
   <div class="grid">
-    <div class="node">ATTRIBUTION<br>BERNARD OF TREVISO (TRAD.)</div>
-    <div class="node">DATE<br>EARLY MODERN PRINT TRADITION</div>
     <div class="node">TYPE<br>ALCHEMICAL TREATISE</div>
     <div class="node">SUBJECT<br>PHILOSOPHER'S STONE</div>
-    <div class="node">STRUCTURE<br>TREATISE + DREAM VISION</div>
-    <div class="node">CLASSIFICATION<br>HERMETIC DOSSIER FILE</div>
+    <div class="node">STRUCTURE<br>DREAM VISION</div>
   </div>
-
-  <p style="margin-top:30px;">
-    NOTE: The Green Dream is regarded as one of the more symbolic dream
-    narratives within alchemical literature. Its imagery of a jeweled giant,
-    crystalline city, and hidden names has generated interpretations ranging
-    from encoded laboratory processes to spiritual initiation and philosophical
-    allegory. The archive catalogs the work as a hybrid alchemical and
-    visionary document.
-  </p>
 </section>
-  <section>
+
+<section>
   <h2>ARCHIVE ENTRY 0004 — SIRIUS TAROT</h2>
-
-  <p>
-    The Sirius Tarot is an esoteric tarot publication associated with late modern occult
-    print culture and symbolic reconstruction traditions. Like many reconstructed decks,
-    it circulates primarily through partial reproductions, cover scans, and secondary
-    archival listings rather than a single standardized commercial edition.
-  </p>
-
-  <p>
-    The deck is frequently categorized within astrological and stellar-aligned tarot systems,
-    with “Sirius” functioning as a symbolic reference to the fixed star Sirius in esoteric
-    cosmology. Surviving material is largely limited to book cover scans and collector
-    documentation rather than a complete digitized card set.
-  </p>
+  <p>Esoteric stellar-aligned tarot system associated with fixed star symbolism.</p>
 
   <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/Germany_Sirius.jpg"
-         alt="Sirius Tarot cover image"/>
-
+    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/Germany_Sirius.jpg"/>
     <div>
-      <div style="
-        margin-bottom:10px;
-        font-size:0.7rem;
-        letter-spacing:0.2em;
-        color:var(--muted);
-      ">
-        DOSSIER COVER IMAGE
-      </div>
-
-      <div style="
-        font-size:0.65rem;
-        letter-spacing:0.25em;
-        color:var(--red);
-      ">
-        STELLAR-BASED OCCULT TAROT — PARTIAL ARCHIVAL RECORD
-      </div>
+      <div style="margin-bottom:10px;font-size:0.7rem;color:var(--muted);">DOSSIER COVER</div>
     </div>
   </div>
-
-  <div class="grid">
-    <div class="node">TYPE<br>TAROT / ASTROLOGICAL CARD SYSTEM</div>
-    <div class="node">SYMBOLIC BASIS<br>SIRIUS FIXED STAR TRADITION</div>
-    <div class="node">STATUS<br>FRAGMENTARY / CIRCULATING PRINTS</div>
-    <div class="node">FORMAT<br>RECONSTRUCTED DECK DOCUMENTATION</div>
-    <div class="node">SOURCE MATERIAL<br>COVER SCANS / COLLECTOR ARCHIVES</div>
-    <div class="node">CLASSIFICATION<br>ESOTERIC TAROT DOSSIER FILE</div>
-  </div>
-
-  <p style="margin-top:30px;">
-    NOTE: This entry is based on limited visual documentation. No complete standardized
-    card index is currently held in the archive. The Sirius Tarot is treated as a
-    distributed symbolic object rather than a fully preserved deck.
-  </p>
 </section>
-  <section>
-  <h2>ARCHIVE ENTRY 0003 — SINISTER TAROT (RECONSTRUCTED DOSSIER)</h2>
 
-  <p>
-    The Sinister Tarot is a modern esoteric card system attributed to Christos Beest,
-    associated with the Order of Nine Angles current. The deck diverges from standard
-    tarot structure, consisting of a reduced arcana set and court classifications rather
-    than the traditional 78-card format.
-  </p>
-
-  <p>
-    Surviving references to the deck exist in fragmented form across limited print editions,
-    secondary reproductions, and scattered digital imagery. No single authoritative digital
-    archive exists; instead, the deck is reconstructed through partial visual records and
-    collector documentation.
-  </p>
-
-  <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/Sinister.jpg"
-         alt="Sinister Tarot reconstructed dossier cover"/>
-
-    <div>
-      <div style="
-        margin-bottom:10px;
-        font-size:0.7rem;
-        letter-spacing:0.2em;
-        color:var(--muted);
-      ">
-        DOSSIER COVER IMAGE
-      </div>
-
-      <div style="
-        font-size:0.65rem;
-        letter-spacing:0.25em;
-        color:var(--red);
-      ">
-        SCATTERED ARCHIVAL MATERIAL — NO CENTRALIZED FILE
-      </div>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="node">TYPE<br>TAROT / OCCULT CARD SYSTEM</div>
-    <div class="node">STRUCTURE<br>34-CARD REDUCED ARCANA</div>
-    <div class="node">ATTRIBUTION<br>CHRISTOS BEEST</div>
-    <div class="node">AFFILIATION<br>ORDER OF NINE ANGLES (CIRCLE)</div>
-    <div class="node">STATUS<br>DISTRIBUTED / FRAGMENTARY</div>
-    <div class="node">CLASSIFICATION<br>RECONSTRUCTED DOSSIER FILE</div>
-  </div>
-
-  <p style="margin-top:30px;">
-    NOTE: This entry does not represent a complete or canonical publication. The Sinister Tarot
-    survives only through partial reproductions and secondary references. The archive treats
-    it as a distributed artifact rather than a singular recoverable deck.
-  </p>
+<section>
+  <h2>ARCHIVE ENTRY 0003 — SINISTER TAROT</h2>
+  <p>Reduced arcana esoteric deck attributed to Christos Beest.</p>
 </section>
+
 <section>
   <h2>ARCHIVE ENTRY 0002 — CLAVIS ARTIS</h2>
-
-  <p>
-    Clavis Artis is an illustrated alchemical manuscript preserved in several
-    eighteenth-century copies, the most widely known being the Trieste manuscript
-    (Ms-2-27) held in the Biblioteca Civica Attilio Hortis. The work is attributed
-    pseudonymously to “Zoroaster” and consists of a sequence of richly illustrated
-    folios depicting symbolic transformations, celestial figures, and allegorical
-    alchemical processes rooted in early modern European hermetic traditions.
-  </p>
-
-  <p>
-    The archive entry is compiled from digitized manuscript folios available through
-    the Wikimedia Commons collection, which hosts scanned pages from the surviving
-    manuscript volumes. These images provide access to the visual structure of the
-    original codex, including its layered symbolic diagrams and instructional sequences.
-  </p>
-
-  <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/images.jpg" alt="Clavis Artis manuscript folio"/>
-
-    <div>
-      <div style="margin-bottom:10px; font-size:0.7rem; letter-spacing:0.2em; color:var(--muted);">
-        MANUSCRIPT GALLERY INDEX
-      </div>
-
-      <a href="https://commons.wikimedia.org/wiki/Clavis_Artis" target="_blank" rel="noopener noreferrer">
-        OPEN WIKIMEDIA ARCHIVE
-      </a>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="node">ATTRIBUTION<br>PSEUDO-ZOROASTER</div>
-    <div class="node">DATE<br>c. 1700–1738</div>
-    <div class="node">LANGUAGE<br>GERMAN</div>
-    <div class="node">TYPE<br>ALCHEMICAL MANUSCRIPT</div>
-    <div class="node">SOURCE<br>WIKIMEDIA COMMONS</div>
-    <div class="node">MATERIAL<br>TRIESTE MS-2-27</div>
-  </div>
-
-  <p style="margin-top:30px;">
-    NOTE: This entry references digitized manuscript folios rather than a single
-    codex file. The Clavis Artis tradition survives through illustrated scans,
-    which collectively reconstruct the visual and symbolic structure of the
-    original manuscript. Users are directed to the Wikimedia Commons archive for
-    full folio access.
-  </p>
+  <p>Illustrated alchemical manuscript tradition (Trieste MS-2-27).</p>
 </section>
+
 <section>
   <h2>ARCHIVE ENTRY 0001 — PSEUDOMONARCHIA DAEMONUM</h2>
-
-  <p>
-    A 16th-century Latin catalog of demonic figures attributed to Johann Weyer (1563).
-    This text functions as an early modern classification system of infernal names,
-    later influencing the Ars Goetia tradition in the Lemegeton cycle.
-  </p>
-  <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/71j7KLzAp-L._AC_UF1000%2C1000_QL80_.jpg" alt="Pseudomonarchia Daemonum cover"/>
-    <div>
-      <div style="margin-bottom:10px; font-size:0.7rem; letter-spacing:0.2em; color:var(--muted);">
-        READABLE FILE
-      </div>
-      <a href="https://www.esotericarchives.com/solomon/weyer.htm" target="_blank">
-        OPEN TEXT ARCHIVE
-      </a>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="node">AUTHOR<br>JOHANN WEYER</div>
-    <div class="node">DATE<br>1563</div>
-    <div class="node">LANGUAGE<br>LATIN</div>
-    <div class="node">TYPE<br>DEMONOLOGICAL CATALOG</div>
-    <div class="node">SOURCE<br>ESOTERIC-ARCHIVES ARCHIVE</div>
-    <div class="node">ACCESS<br>pseudomonarchia daemonum</div>
-  </div>
-
-  <p style="margin-top:30px;">
-    NOTE: This document is primarily a descriptive taxonomy of named entities within early modern
-    European demonological thought.
-  </p>
+  <p>16th-century demonological catalog attributed to Johann Weyer.</p>
 </section>
 
-<script>
-const sigil = document.getElementById("sigilText");
-const glyphs = ["⟡","⟢","⟣","⟠","⟤","⟥","⟊","⟐","⟟"];
-
-function mutateSigil(){
-  let s = "";
-  const len = 3 + Math.floor(Math.random()*5);
-  for(let i=0;i<len;i++){
-    s += glyphs[Math.floor(Math.random()*glyphs.length)] + " ";
-  }
-  sigil.textContent = s.trim();
-}
-
-setInterval(mutateSigil, 1200);
-mutateSigil();
-</script>
-
-</body>
-</html>
+<!-- ✅ NEW ENTRY ADDED CLEANLY -->
 <section>
   <h2>ARCHIVE ENTRY 0006 — SLUMBERLAND TAROT</h2>
 
   <p>
-    The Slumberland Tarot is a contemporary esoteric tarot deck attributed to the Korean artist Hemon.
-    The work is associated with dreamlike visual languages, blending surreal illustration traditions
-    with modern occult reinterpretation. It is often described as a liminal tarot system centered on
-    subconscious landscapes, symbolic thresholds, and fragmented narrative imagery.
+    The Slumberland Tarot is a contemporary tarot deck by Korean artist Hemon,
+    built around dream-logic surreal imagery and subconscious symbolism.
   </p>
 
   <p>
-    Unlike reconstructed historical decks preserved through archival fragments, the Slumberland Tarot
-    exists primarily as a modern artistic publication. Its circulation is tied to illustrated editions
-    and collector prints rather than manuscript transmission, positioning it within contemporary
-    global tarot design culture emerging from East Asian independent art scenes.
+    It belongs to modern independent tarot publishing rather than historical occult systems.
   </p>
 
   <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/slumberland.jpg"
-         alt="Slumberland Tarot by Hemon cover"/>
-
+    <img src="https://via.placeholder.com/120x180.png?text=Slumberland+Tarot"/>
     <div>
-      <div style="
-        margin-bottom:10px;
-        font-size:0.7rem;
-        letter-spacing:0.2em;
-        color:var(--muted);
-      ">
+      <div style="margin-bottom:10px;font-size:0.7rem;letter-spacing:0.2em;color:var(--muted);">
         CONTEMPORARY TAROT INDEX
       </div>
-
-      <div style="
-        font-size:0.65rem;
-        letter-spacing:0.25em;
-        color:var(--red);
-      ">
-        ARTIST PUBLICATION — HE MON (KOREA)
+      <div style="font-size:0.65rem;letter-spacing:0.25em;color:var(--red);">
+        HE MON (KOREA)
       </div>
     </div>
   </div>
 
   <div class="grid">
-    <div class="node">TYPE<br>CONTEMPORARY TAROT DECK</div>
+    <div class="node">TYPE<br>CONTEMPORARY TAROT</div>
     <div class="node">ARTIST<br>HEMON</div>
     <div class="node">ORIGIN<br>SOUTH KOREA</div>
-    <div class="node">STYLE<br>SURREAL / DREAM ICONOGRAPHY</div>
-    <div class="node">STATUS<br>MODERN ART DECK</div>
-    <div class="node">CLASSIFICATION<br>ILLUSTRATED TAROT SYSTEM</div>
+    <div class="node">STYLE<br>DREAM / SURREAL</div>
   </div>
-
-  <p style="margin-top:30px;">
-    NOTE: The Slumberland Tarot is treated in this archive as a contemporary artistic tarot system.
-    Its structure and imagery are defined by modern illustration practice rather than historical
-    esoteric reconstruction, emphasizing subjective dream logic and visual symbolism.
-  </p>
-</section>
- <section>
-  <h2>ARCHIVE ENTRY 0005 — THE TEXT OF ALCHEMY AND THE GREEN DREAM</h2>
-
-  <p>
-    The Text of Alchemy and the Green Dream is an alchemical treatise preserved
-    within the Western hermetic tradition and traditionally associated with
-    Bernard of Treviso. The work combines direct discussion of alchemical
-    principles with a visionary allegorical narrative in which symbolic figures,
-    crystalline architecture, and enigmatic names serve as vehicles for
-    communicating concealed philosophical concepts.
-  </p>
-
-  <p>
-    The text is notable for its dual structure. The first portion discusses the
-    nature of transformation, perfection, and the Philosopher's Stone, while
-    the Green Dream presents these themes through a symbolic dream vision.
-    Because of its layered imagery, the work has been interpreted as a guide
-    to laboratory alchemy, a spiritual allegory, and a philosophical meditation
-    on the hidden operations of nature.
-  </p>
-
-  <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/411SBQILnsL._SY445_SX342_ML2_.jpg"
-         alt="The Text of Alchemy and the Green Dream cover"/>
-
-    <div>
-      <div style="
-        margin-bottom:10px;
-        font-size:0.7rem;
-        letter-spacing:0.2em;
-        color:var(--muted);
-      ">
-        FULL TEXT ARCHIVE
-      </div>
-
-      <a href="https://www.alchemy-texts.com/book/the-text-of-alchemy-and-the-green-dream-full/"
-         target="_blank"
-         rel="noopener noreferrer">
-        OPEN TEXT ARCHIVE
-      </a>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="node">ATTRIBUTION<br>BERNARD OF TREVISO (TRAD.)</div>
-    <div class="node">DATE<br>EARLY MODERN PRINT TRADITION</div>
-    <div class="node">TYPE<br>ALCHEMICAL TREATISE</div>
-    <div class="node">SUBJECT<br>PHILOSOPHER'S STONE</div>
-    <div class="node">STRUCTURE<br>TREATISE + DREAM VISION</div>
-    <div class="node">CLASSIFICATION<br>HERMETIC DOSSIER FILE</div>
-  </div>
-
-  <p style="margin-top:30px;">
-    NOTE: The Green Dream is regarded as one of the more symbolic dream
-    narratives within alchemical literature. Its imagery of a jeweled giant,
-    crystalline city, and hidden names has generated interpretations ranging
-    from encoded laboratory processes to spiritual initiation and philosophical
-    allegory. The archive catalogs the work as a hybrid alchemical and
-    visionary document.
-  </p>
-</section>
-  <section>
-  <h2>ARCHIVE ENTRY 0004 — SIRIUS TAROT</h2>
-
-  <p>
-    The Sirius Tarot is an esoteric tarot publication associated with late modern occult
-    print culture and symbolic reconstruction traditions. Like many reconstructed decks,
-    it circulates primarily through partial reproductions, cover scans, and secondary
-    archival listings rather than a single standardized commercial edition.
-  </p>
-
-  <p>
-    The deck is frequently categorized within astrological and stellar-aligned tarot systems,
-    with “Sirius” functioning as a symbolic reference to the fixed star Sirius in esoteric
-    cosmology. Surviving material is largely limited to book cover scans and collector
-    documentation rather than a complete digitized card set.
-  </p>
-
-  <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/Germany_Sirius.jpg"
-         alt="Sirius Tarot cover image"/>
-
-    <div>
-      <div style="
-        margin-bottom:10px;
-        font-size:0.7rem;
-        letter-spacing:0.2em;
-        color:var(--muted);
-      ">
-        DOSSIER COVER IMAGE
-      </div>
-
-      <div style="
-        font-size:0.65rem;
-        letter-spacing:0.25em;
-        color:var(--red);
-      ">
-        STELLAR-BASED OCCULT TAROT — PARTIAL ARCHIVAL RECORD
-      </div>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="node">TYPE<br>TAROT / ASTROLOGICAL CARD SYSTEM</div>
-    <div class="node">SYMBOLIC BASIS<br>SIRIUS FIXED STAR TRADITION</div>
-    <div class="node">STATUS<br>FRAGMENTARY / CIRCULATING PRINTS</div>
-    <div class="node">FORMAT<br>RECONSTRUCTED DECK DOCUMENTATION</div>
-    <div class="node">SOURCE MATERIAL<br>COVER SCANS / COLLECTOR ARCHIVES</div>
-    <div class="node">CLASSIFICATION<br>ESOTERIC TAROT DOSSIER FILE</div>
-  </div>
-
-  <p style="margin-top:30px;">
-    NOTE: This entry is based on limited visual documentation. No complete standardized
-    card index is currently held in the archive. The Sirius Tarot is treated as a
-    distributed symbolic object rather than a fully preserved deck.
-  </p>
-</section>
-  <section>
-  <h2>ARCHIVE ENTRY 0003 — SINISTER TAROT (RECONSTRUCTED DOSSIER)</h2>
-
-  <p>
-    The Sinister Tarot is a modern esoteric card system attributed to Christos Beest,
-    associated with the Order of Nine Angles current. The deck diverges from standard
-    tarot structure, consisting of a reduced arcana set and court classifications rather
-    than the traditional 78-card format.
-  </p>
-
-  <p>
-    Surviving references to the deck exist in fragmented form across limited print editions,
-    secondary reproductions, and scattered digital imagery. No single authoritative digital
-    archive exists; instead, the deck is reconstructed through partial visual records and
-    collector documentation.
-  </p>
-
-  <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/Sinister.jpg"
-         alt="Sinister Tarot reconstructed dossier cover"/>
-
-    <div>
-      <div style="
-        margin-bottom:10px;
-        font-size:0.7rem;
-        letter-spacing:0.2em;
-        color:var(--muted);
-      ">
-        DOSSIER COVER IMAGE
-      </div>
-
-      <div style="
-        font-size:0.65rem;
-        letter-spacing:0.25em;
-        color:var(--red);
-      ">
-        SCATTERED ARCHIVAL MATERIAL — NO CENTRALIZED FILE
-      </div>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="node">TYPE<br>TAROT / OCCULT CARD SYSTEM</div>
-    <div class="node">STRUCTURE<br>34-CARD REDUCED ARCANA</div>
-    <div class="node">ATTRIBUTION<br>CHRISTOS BEEST</div>
-    <div class="node">AFFILIATION<br>ORDER OF NINE ANGLES (CIRCLE)</div>
-    <div class="node">STATUS<br>DISTRIBUTED / FRAGMENTARY</div>
-    <div class="node">CLASSIFICATION<br>RECONSTRUCTED DOSSIER FILE</div>
-  </div>
-
-  <p style="margin-top:30px;">
-    NOTE: This entry does not represent a complete or canonical publication. The Sinister Tarot
-    survives only through partial reproductions and secondary references. The archive treats
-    it as a distributed artifact rather than a singular recoverable deck.
-  </p>
-</section>
-<section>
-  <h2>ARCHIVE ENTRY 0002 — CLAVIS ARTIS</h2>
-
-  <p>
-    Clavis Artis is an illustrated alchemical manuscript preserved in several
-    eighteenth-century copies, the most widely known being the Trieste manuscript
-    (Ms-2-27) held in the Biblioteca Civica Attilio Hortis. The work is attributed
-    pseudonymously to “Zoroaster” and consists of a sequence of richly illustrated
-    folios depicting symbolic transformations, celestial figures, and allegorical
-    alchemical processes rooted in early modern European hermetic traditions.
-  </p>
-
-  <p>
-    The archive entry is compiled from digitized manuscript folios available through
-    the Wikimedia Commons collection, which hosts scanned pages from the surviving
-    manuscript volumes. These images provide access to the visual structure of the
-    original codex, including its layered symbolic diagrams and instructional sequences.
-  </p>
-
-  <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/images.jpg" alt="Clavis Artis manuscript folio"/>
-
-    <div>
-      <div style="margin-bottom:10px; font-size:0.7rem; letter-spacing:0.2em; color:var(--muted);">
-        MANUSCRIPT GALLERY INDEX
-      </div>
-
-      <a href="https://commons.wikimedia.org/wiki/Clavis_Artis" target="_blank" rel="noopener noreferrer">
-        OPEN WIKIMEDIA ARCHIVE
-      </a>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="node">ATTRIBUTION<br>PSEUDO-ZOROASTER</div>
-    <div class="node">DATE<br>c. 1700–1738</div>
-    <div class="node">LANGUAGE<br>GERMAN</div>
-    <div class="node">TYPE<br>ALCHEMICAL MANUSCRIPT</div>
-    <div class="node">SOURCE<br>WIKIMEDIA COMMONS</div>
-    <div class="node">MATERIAL<br>TRIESTE MS-2-27</div>
-  </div>
-
-  <p style="margin-top:30px;">
-    NOTE: This entry references digitized manuscript folios rather than a single
-    codex file. The Clavis Artis tradition survives through illustrated scans,
-    which collectively reconstruct the visual and symbolic structure of the
-    original manuscript. Users are directed to the Wikimedia Commons archive for
-    full folio access.
-  </p>
-</section>
-<section>
-  <h2>ARCHIVE ENTRY 0001 — PSEUDOMONARCHIA DAEMONUM</h2>
-
-  <p>
-    A 16th-century Latin catalog of demonic figures attributed to Johann Weyer (1563).
-    This text functions as an early modern classification system of infernal names,
-    later influencing the Ars Goetia tradition in the Lemegeton cycle.
-  </p>
-  <div class="book">
-    <img src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/71j7KLzAp-L._AC_UF1000%2C1000_QL80_.jpg" alt="Pseudomonarchia Daemonum cover"/>
-    <div>
-      <div style="margin-bottom:10px; font-size:0.7rem; letter-spacing:0.2em; color:var(--muted);">
-        READABLE FILE
-      </div>
-      <a href="https://www.esotericarchives.com/solomon/weyer.htm" target="_blank">
-        OPEN TEXT ARCHIVE
-      </a>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="node">AUTHOR<br>JOHANN WEYER</div>
-    <div class="node">DATE<br>1563</div>
-    <div class="node">LANGUAGE<br>LATIN</div>
-    <div class="node">TYPE<br>DEMONOLOGICAL CATALOG</div>
-    <div class="node">SOURCE<br>ESOTERIC-ARCHIVES ARCHIVE</div>
-    <div class="node">ACCESS<br>pseudomonarchia daemonum</div>
-  </div>
-
-  <p style="margin-top:30px;">
-    NOTE: This document is primarily a descriptive taxonomy of named entities within early modern
-    European demonological thought.
-  </p>
 </section>
 
 <script>
