@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BLACK SIGNAL SURVEILLANCE INSTITUTE</title>
+
+<style>
+:root{
+  --bg:#020003;
+  --fg:#f3eaea;
+  --muted:#b7a7ad;
+  --red:#9b0018;
+  --line:#2a0010;
+}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 50% 30%, #1a0008, #020003 65%),
+    radial-gradient(circle at 10% 80%, rgba(155,0,24,0.2), transparent 60%);
+  color:var(--fg);
+  font-family:"Courier New", monospace;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    repeating-radial-gradient(circle at 40% 40%,
+      rgba(155,0,24,0.06) 0px,
+      transparent 4px,
+      transparent 12px);
+  opacity:0.35;
+  filter: blur(1px);
+  pointer-events:none;
+}
+
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(155,0,24,0.25), transparent 55%),
+    radial-gradient(circle at 80% 60%, rgba(40,0,10,0.6), transparent 60%),
+    radial-gradient(circle at 50% 90%, rgba(10,0,5,0.9), transparent 70%);
+  filter: blur(80px);
+  opacity:0.85;
+  pointer-events:none;
+  mix-blend-mode: screen;
+  animation: drift 18s infinite linear;
+}
+
+@keyframes drift{
+  0%{transform:translate(0,0);}
+  50%{transform:translate(-2%,2%);}
+  100%{transform:translate(0,0);}
+}
+
+header{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+
+.title{
+  font-size:2.2rem;
+  letter-spacing:0.9em;
+  animation:flicker 5s infinite;
+}
+
+.sub{
+  margin-top:20px;
+  max-width:700px;
+  font-size:0.72rem;
+  color:var(--muted);
+  letter-spacing:0.3em;
+  line-height:1.8;
+}
+
+.boot{
+  margin-top:30px;
+  font-size:0.65rem;
+  color:var(--red);
+  letter-spacing:0.35em;
+}
+
+
+.sigil{
+  margin-top:50px;
+  font-size:4rem;
+  color:rgba(155,0,24,0.3);
+  text-shadow:0 0 25px rgba(155,0,24,0.3);
+  transition:0.3s;
+}
+
+
+section{
+  padding:140px 24px;
+  max-width:920px;
+  margin:auto;
+  border-bottom:1px solid var(--line);
+}
+
+h2{
+  font-size:0.75rem;
+  letter-spacing:0.7em;
+  margin-bottom:26px;
+}
+
+p{
+  color:var(--muted);
+  line-height:2;
+  font-size:0.9rem;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  gap:14px;
+  margin-top:35px;
+}
+
+
+.node{
+  border:1px solid rgba(155,0,24,0.25);
+  min-height:110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:0.7rem;
+  letter-spacing:0.4em;
+  background:rgba(5,0,3,0.45);
+  backdrop-filter: blur(12px);
+  transition:0.25s;
+  position:relative;
+  overflow:hidden;
+}
+
+
+.node::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 50%, rgba(155,0,24,0.2), transparent 60%);
+  opacity:0;
+  transition:0.3s;
+}
+
+.node:hover::before{
+  opacity:1;
+}
+
+.node:hover{
+  border-color:var(--red);
+  color:var(--red);
+  text-shadow:0 0 14px rgba(155,0,24,0.8);
+  transform:scale(1.03);
+}
+
+@keyframes flicker{
+  0%,100%{opacity:1;}
+  50%{opacity:0.82;}
+}
+
+canvas{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  opacity:0.35;
+  filter:blur(0.3px);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="title">BLACK SIGNAL SURVEILLANCE INSTITUTE</div>
+  <div class="sub">
+    LIVING ARCHIVAL ENTITY / NON-STABLE SIGNAL FIELD / RITUALIZED COMPUTATIONAL CORRUPTION
+  </div>
+
+  <div class="boot">SYSTEM BOOT: unstable... unstable... unstable...</div>
+
+  <div class="sigil" id="sigilText">⟡</div>
+</header>
+
+<section>
+  <h2>SEAL I — LIVE INK FIELD</h2>
+  <p>Records are not stored. They propagate.</p>
+
+  <div class="grid">
+    <div class="node">INK NODE 001</div>
+    <div class="node">INK NODE 002</div>
+    <div class="node">INK NODE 003</div>
+    <div class="node">INK NODE 004</div>
+  </div>
+</section>
+
+<section>
+  <h2>SEAL II — CORRUPTION LAYERS</h2>
+  <p>Observation destabilizes structure.</p>
+
+  <div class="grid">
+    <div class="node">RITE NULL</div>
+    <div class="node">RITE ECHO</div>
+    <div class="node">RITE VESSEL</div>
+    <div class="node">RITE ERROR</div>
+  </div>
+</section>
+
+<section>
+  <h2>SEAL III — LIVING NODES</h2>
+  <p>Some entries adapt to being viewed.</p>
+
+  <div class="grid">
+    <div class="node">NODE XIII</div>
+    <div class="node">NODE XV</div>
+    <div class="node">NODE XIX</div>
+    <div class="node">NODE XXII</div>
+  </div>
+</section>
+
+<footer>
+OBSIDIAN INDEX // REALITY STABILITY COMPROMISED // DO NOT STABILIZE SYSTEM
+</footer>
+
+<script>
+
+const glyphs = ["⟡","⟢","⟣","⟠","⟤","⟥","⟊","⟐","⟟"];
+
+const sigil = document.getElementById("sigilText");
+
+function mutateSigil(){
+  let s = "";
+  const len = 3 + Math.floor(Math.random()*5);
+
+  for(let i=0;i<len;i++){
+    s += glyphs[Math.floor(Math.random()*glyphs.length)] + " ";
+  }
+
+  sigil.textContent = s.trim();
+}
+
+setInterval(mutateSigil, 1200);
+mutateSigil();
+
+
+const nodes = document.querySelectorAll(".node");
+
+nodes.forEach(n=>{
+  n.addEventListener("mouseenter", ()=>{
+    nodes.forEach(x=>{
+      if(Math.random() > 0.7){
+        x.style.filter = "brightness(0.6) contrast(1.2)";
+        setTimeout(()=>x.style.filter="", 500);
+      }
+    });
+  });
+});
+
+
+setInterval(()=>{
+  document.body.style.filter = (Math.random() > 0.85)
+    ? "contrast(1.2) brightness(0.9)"
+    : "none";
+}, 300);
+</script>
+
+</body>
+</html>
