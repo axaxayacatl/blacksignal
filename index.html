@@ -1,24 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050204">
-<title>BLACK SIGNAL // SURVEILLANCE INSTITUTE</title>
+<title>BLACK SIGNAL — NOCTURNE ARCHIVE</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #050204;
-  --panel: rgba(13, 5, 9, .94);
-  --panel2: rgba(24, 5, 12, .72);
-  --fg: #eee5e8;
-  --muted: #a18c95;
-  --red: #ff303b;
-  --deep: #8f001b;
-  --line: rgba(255, 48, 59, .23);
-  --green: #a3c99a;
-  --amber: #d6a66b;
-  --mono: "Courier New", monospace;
+  --bg: #080709;
+  --panel: #100d10;
+  --panel2: #171116;
+  --fg: #eee7e9;
+  --muted: #a99ba1;
+  --dim: #66565e;
+  --red: #b21d37;
+  --red2: #6e1025;
+  --line: #35202a;
+  --serif: "Playfair Display", Georgia, serif;
+  --mono: "IBM Plex Mono", monospace;
 }
 
 * { box-sizing: border-box; }
@@ -27,11 +31,10 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background:
-    radial-gradient(ellipse at 50% 0%, #24000c 0%, transparent 55%),
-    var(--bg);
+  background: var(--bg);
   color: var(--fg);
   font-family: var(--mono);
+  font-size: 13px;
   overflow-x: hidden;
 }
 
@@ -39,1244 +42,1769 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: 10;
   pointer-events: none;
-  opacity: .14;
+  z-index: 20;
+  opacity: .12;
   background: repeating-linear-gradient(
+    0deg,
     transparent 0px,
     transparent 3px,
     rgba(255,255,255,.035) 4px
   );
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: -50%;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(155,0,24,.12), transparent 60%);
-  animation: drift 18s ease-in-out infinite;
+a {
+  color: #d65b70;
+  text-decoration: none;
 }
 
-@keyframes drift {
-  50% { transform: translate(3%, -2%); }
+a:hover { color: #fff; }
+
+::selection {
+  background: var(--red);
+  color: white;
 }
 
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  48% { opacity: .88; }
-  50% { opacity: .72; }
-  52% { opacity: .96; }
+/* TOP BAR */
+
+.topbar {
+  height: 42px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  color: var(--dim);
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  background: #090709;
+  position: relative;
+  z-index: 30;
 }
 
-@keyframes pulse {
-  50% { opacity: .45; }
-}
-
-a { color: var(--red); text-decoration: none; }
-a:hover { text-shadow: 0 0 12px var(--red); }
-
-button, input, select { font: inherit; }
-
-button {
-  color: var(--fg);
-  background: #10050a;
-  border: 1px solid var(--line);
-  padding: 10px 14px;
-  cursor: pointer;
-  font-size: .65rem;
-  letter-spacing: .12em;
-  transition: .2s;
-}
-
-button:hover {
-  border-color: var(--red);
+.topbar strong {
   color: var(--red);
-  background: #1d050d;
+  font-weight: 500;
 }
 
-button:focus-visible, input:focus-visible, a:focus-visible {
-  outline: 2px solid var(--red);
-  outline-offset: 3px;
-}
+/* HERO */
 
-header {
-  min-height: 94vh;
-  padding: 70px 24px;
+.hero {
+  min-height: 620px;
+  height: 88vh;
+  max-height: 900px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-bottom: 1px solid var(--line);
   position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  padding: 40px 20px;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(117, 14, 39, .19), transparent 48%),
+    radial-gradient(ellipse at 50% 100%, rgba(75, 13, 31, .2), transparent 55%),
+    #080709;
 }
 
-.header-code {
+.hero::before {
+  content: "B.S.S.I.";
+  position: absolute;
+  font-family: var(--serif);
+  font-size: clamp(170px, 32vw, 460px);
+  letter-spacing: -.08em;
+  color: rgba(164, 29, 55, .055);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-kicker {
   color: var(--red);
-  font-size: .65rem;
-  letter-spacing: .4em;
+  font-size: 9px;
+  letter-spacing: .55em;
   margin-bottom: 30px;
 }
 
-.title {
-  max-width: 1100px;
-  font-size: clamp(1.3rem, 4vw, 3.3rem);
-  letter-spacing: clamp(.15em, 1vw, .65em);
-  line-height: 1.5;
-  animation: flicker 6s infinite;
-  text-shadow: 0 0 25px rgba(255,48,59,.2);
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(34px, 6vw, 78px);
+  line-height: 1.05;
+  letter-spacing: .04em;
+  max-width: 1050px;
+  margin: 0 auto;
 }
 
-.subtitle {
-  max-width: 750px;
-  margin-top: 24px;
+.hero h1 span {
+  display: block;
+  font-style: italic;
+  color: #a52a42;
+  font-size: .65em;
+  margin-top: 10px;
+}
+
+.hero-subtitle {
   color: var(--muted);
-  font-size: .7rem;
-  letter-spacing: .22em;
-  line-height: 2;
-}
-
-.boot {
-  margin-top: 36px;
-  color: var(--red);
-  font-size: .65rem;
+  font-size: 10px;
+  line-height: 2.3;
   letter-spacing: .25em;
+  margin: 34px auto 0;
+  max-width: 600px;
 }
 
-.sigil {
-  margin-top: 45px;
-  color: rgba(255,48,59,.35);
-  font-size: 4rem;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.sigil:hover {
+.hero-status {
+  margin-top: 55px;
   color: var(--red);
-  text-shadow: 0 0 25px var(--red);
-  transform: rotate(45deg);
-}
-
-.scroll-cue {
-  position: absolute;
-  bottom: 28px;
-  color: var(--muted);
-  font-size: .55rem;
+  font-size: 9px;
   letter-spacing: .3em;
-  animation: pulse 2s infinite;
 }
 
-main {
-  width: min(1160px, 92%);
+.hero-mark {
+  margin-top: 40px;
+  font-size: 34px;
+  color: rgba(178, 29, 55, .55);
+  text-shadow: 0 0 35px rgba(178, 29, 55, .35);
+}
+
+/* LAYOUT */
+
+.layout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  max-width: 1500px;
   margin: auto;
 }
 
-section { padding: 65px 0; }
-
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 20px;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 15px;
-  margin-bottom: 25px;
+.sidebar {
+  border-right: 1px solid var(--line);
+  padding: 34px 22px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  align-self: start;
+  background: rgba(10, 8, 10, .96);
 }
 
-.section-head h2 {
-  margin: 0;
-  font-size: .85rem;
-  font-weight: normal;
-  letter-spacing: .3em;
-}
-
-.section-head span {
+.side-label {
+  font-size: 9px;
   color: var(--red);
-  font-size: .6rem;
-  letter-spacing: .2em;
+  letter-spacing: .3em;
+  margin-bottom: 20px;
+}
+
+.side-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.side-description {
+  color: var(--dim);
+  font-size: 9px;
+  line-height: 1.9;
+  margin-bottom: 30px;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.side-nav a {
+  color: var(--muted);
+  padding: 10px 8px;
+  font-size: 9px;
+  letter-spacing: .08em;
+  border-left: 1px solid transparent;
+  transition: .2s;
+}
+
+.side-nav a:hover {
+  color: white;
+  border-left-color: var(--red);
+  background: rgba(178, 29, 55, .08);
+}
+
+.side-nav span {
+  color: var(--red);
+  margin-right: 8px;
+}
+
+.side-bottom {
+  border-top: 1px solid var(--line);
+  margin-top: 30px;
+  padding-top: 20px;
+  color: var(--dim);
+  font-size: 8px;
+  line-height: 2;
+  letter-spacing: .1em;
+}
+
+.content {
+  min-width: 0;
+  padding: 0 5vw;
+}
+
+/* COLLECTION HEADER */
+
+.collection-header {
+  padding: 65px 0 35px;
+  border-bottom: 1px solid var(--line);
 }
 
 .eyebrow {
   color: var(--red);
-  font-size: .6rem;
-  letter-spacing: .3em;
+  font-size: 9px;
+  letter-spacing: .35em;
+  margin-bottom: 14px;
+}
+
+.collection-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 500;
+  margin: 0;
+}
+
+.collection-header p {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 2;
+  margin-top: 18px;
+}
+
+.collection-tools {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.search-wrap {
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-wrap input {
+  width: 100%;
+  background: #100d10;
+  border: 1px solid var(--line);
+  color: var(--fg);
+  padding: 13px 15px;
+  font: 10px var(--mono);
+  outline: none;
+}
+
+.search-wrap input:focus {
+  border-color: var(--red);
+}
+
+.search-wrap input::placeholder { color: var(--dim); }
+
+.collection-count {
+  color: var(--dim);
+  font-size: 9px;
+  letter-spacing: .15em;
+}
+
+/* ARCHIVE ENTRIES */
+
+.entry {
+  padding: 70px 0 78px;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 25px;
+}
+
+.entry-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.entry-number {
+  color: var(--red);
+  font-size: 9px;
+  letter-spacing: .25em;
+}
+
+.entry-type {
+  color: var(--dim);
+  font-size: 8px;
+  letter-spacing: .2em;
+  text-align: right;
+}
+
+.entry h2 {
+  font-family: var(--serif);
+  font-size: clamp(25px, 3.4vw, 43px);
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: .015em;
+  margin: 0 0 26px;
+  max-width: 850px;
+}
+
+.entry h2 em {
+  color: #bd5268;
+  font-weight: 500;
+}
+
+.entry p {
+  color: #b9adb2;
+  font-size: 11px;
+  line-height: 2.15;
+  max-width: 850px;
+  margin: 0 0 18px;
+}
+
+.entry p strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.entry-label {
+  margin: 28px 0 8px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .25em;
+}
+
+.entry-sub-label {
+  color: var(--red);
+  font-size: 9px;
+  letter-spacing: .2em;
+  line-height: 1.8;
+}
+
+/* IMAGE PLATES */
+
+.plate {
+  display: grid;
+  grid-template-columns: minmax(160px, 260px) 1fr;
+  gap: 25px;
+  align-items: center;
+  margin: 30px 0;
+  padding: 17px;
+  background: linear-gradient(120deg, #171116, #0c090c);
+  border: 1px solid var(--line);
+}
+
+.plate-image {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  background: #050405;
+  border: 1px solid #39202a;
+  display: block;
+  cursor: zoom-in;
+  transition: .3s;
+}
+
+.plate-image:hover {
+  filter: contrast(1.08);
+  border-color: var(--red);
+}
+
+.plate-caption {
+  color: var(--dim);
+  font-size: 8px;
+  letter-spacing: .2em;
+  margin-bottom: 14px;
+}
+
+.plate-title {
+  color: var(--fg);
+  font-family: var(--serif);
+  font-size: 21px;
   margin-bottom: 12px;
 }
 
-p {
+.plate-description {
   color: var(--muted);
-  font-size: .82rem;
-  line-height: 1.95;
-}
-
-.status-panel {
-  border: 1px solid var(--line);
-  background: var(--panel);
-  padding: 22px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.status-item {
-  border-left: 2px solid var(--deep);
-  padding-left: 13px;
-}
-
-.status-label {
-  color: var(--muted);
-  font-size: .58rem;
-  letter-spacing: .2em;
-}
-
-.status-value {
-  margin-top: 9px;
-  color: var(--red);
-  font-size: .8rem;
-  letter-spacing: .1em;
-}
-
-.terminal {
-  border: 1px solid var(--line);
-  background: rgba(5,2,4,.9);
-  padding: 24px;
-}
-
-.terminal-top {
-  display: flex;
-  justify-content: space-between;
-  color: var(--red);
-  font-size: .62rem;
-  letter-spacing: .2em;
-  margin-bottom: 18px;
-}
-
-.search-row {
-  display: flex;
-  gap: 10px;
-}
-
-.search-row input {
-  flex: 1;
-  min-width: 0;
-  background: #090407;
-  border: 1px solid var(--line);
-  padding: 14px;
-  color: var(--fg);
-  font-size: .8rem;
-}
-
-.search-row input::placeholder { color: #745d66; }
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.filter.active {
-  border-color: var(--red);
-  color: var(--red);
-  background: rgba(155,0,24,.12);
-}
-
-.filter { font-size: .58rem; }
-
-.result-line {
-  margin-top: 18px;
-  color: var(--muted);
-  font-size: .62rem;
-  letter-spacing: .15em;
-}
-
-.department-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 12px;
-}
-
-.department {
-  min-height: 120px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  padding: 19px;
-  cursor: pointer;
-  transition: .25s;
-}
-
-.department:hover {
-  border-color: var(--red);
-  transform: translateY(-3px);
-}
-
-.department-no {
-  color: var(--red);
-  font-size: .58rem;
-  letter-spacing: .2em;
-}
-
-.department h3 {
-  font-weight: normal;
-  font-size: .72rem;
-  letter-spacing: .15em;
-  margin: 18px 0 8px;
-}
-
-.department p {
-  margin: 0;
-  font-size: .68rem;
-}
-
-.archive-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 15px;
-}
-
-.record {
-  position: relative;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  min-height: 290px;
-  transition: .25s;
-}
-
-.record:hover {
-  border-color: var(--red);
-  box-shadow: 0 0 22px rgba(155,0,24,.12);
-}
-
-.record[hidden] { display: none; }
-
-.record-meta {
-  color: var(--red);
-  font-size: .57rem;
-  letter-spacing: .2em;
-  line-height: 1.8;
-}
-
-.record h3 {
-  font-weight: normal;
-  font-size: .95rem;
+  font-size: 9px;
+  line-height: 2;
   letter-spacing: .08em;
-  margin: 17px 0 10px;
 }
 
-.record p {
-  font-size: .75rem;
-  line-height: 1.8;
-}
-
-.record-footer {
-  margin-top: auto;
-  padding-top: 20px;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tag {
-  border: 1px solid rgba(255,48,59,.2);
-  padding: 5px 7px;
-  color: var(--muted);
-  font-size: .55rem;
-}
-
-.research-status {
+.plate-link {
   display: inline-block;
-  margin-top: 12px;
-  font-size: .55rem;
-  letter-spacing: .12em;
-  color: var(--green);
+  margin-top: 18px;
+  color: #d65b70;
+  font-size: 9px;
+  letter-spacing: .15em;
+  border-bottom: 1px solid var(--red2);
+  padding-bottom: 5px;
 }
 
-.research-status.fragmentary { color: var(--amber); }
-.research-status.interpretive { color: #c49bd6; }
+/* LARGE IMAGE STUDIES */
 
-.record-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 13px;
+.feature-image {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+  margin: 28px 0;
+  background: #050405;
+  border: 1px solid var(--line);
+  cursor: zoom-in;
 }
 
-.record-actions button { font-size: .55rem; }
+.feature-image.portrait {
+  width: min(100%, 390px);
+  max-height: 470px;
+  object-position: center;
+}
 
-.featured {
+/* DATA GRID */
+
+.data-grid {
   display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 25px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
   border: 1px solid var(--line);
-  padding: 25px;
-  background: var(--panel);
+  margin: 30px 0;
 }
 
-.featured h3 {
-  font-size: 1.2rem;
-  font-weight: normal;
-  letter-spacing: .1em;
+.data-cell {
+  background: #100d10;
+  min-height: 78px;
+  padding: 15px;
 }
 
-.featured-visual {
-  min-height: 230px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:
-    radial-gradient(circle, rgba(155,0,24,.25), transparent 65%),
-    #080307;
-  border: 1px solid var(--line);
-  font-size: 5rem;
-  color: rgba(255,48,59,.4);
+.data-cell span {
+  display: block;
+  color: var(--red);
+  font-size: 8px;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
 }
 
-.crossref-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.data-cell div {
+  color: #d2c5ca;
+  font-size: 9px;
+  line-height: 1.7;
+  letter-spacing: .04em;
 }
 
-.crossref {
-  border: 1px solid var(--line);
-  padding: 12px;
-  background: var(--panel);
-  font-size: .65rem;
-  color: var(--fg);
-}
+/* FACT GRID FOR SPECIAL ENTRIES */
 
-.crossref:hover { border-color: var(--red); color: var(--red); }
-
-.source-list {
+.factgrid {
   display: grid;
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  margin: 28px 0;
 }
 
-.source {
-  padding: 16px;
-  border-left: 2px solid var(--deep);
-  background: var(--panel);
-  font-size: .7rem;
-  color: var(--muted);
+.factgrid div {
+  padding: 14px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: #d2c5ca;
+  font-size: 10px;
   line-height: 1.8;
 }
 
-.source strong {
-  color: var(--fg);
-  font-weight: normal;
+.factgrid span {
+  display: block;
+  color: var(--red);
+  font-size: 8px;
+  letter-spacing: .2em;
+  margin-bottom: 5px;
 }
 
-.source a {
-  display: inline-block;
-  margin-top: 7px;
-  font-size: .6rem;
-  letter-spacing: .1em;
+.microtag {
+  color: var(--red);
+  font-size: 9px;
+  letter-spacing: .3em;
+  margin: -10px 0 25px;
 }
 
-.method-note {
-  border: 1px solid var(--line);
-  padding: 22px;
-  background: var(--panel2);
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+  margin: 30px 0;
 }
 
-.method-note strong { color: var(--red); }
+.entry h3 {
+  color: var(--red);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: .3em;
+  margin: 30px 0 14px;
+}
 
-#randomResult {
-  border: 1px solid var(--line);
-  padding: 22px;
-  background: var(--panel);
-  min-height: 90px;
-  margin-top: 14px;
+/* EXPEDITION LABEL */
+
+.expedition-label {
+  margin: 30px 0;
+  padding: 20px;
+  border-left: 2px solid var(--red);
+  background: rgba(178, 29, 55, .055);
+}
+
+.expedition-label .main {
   color: var(--muted);
-  font-size: .75rem;
+  font-size: 9px;
+  letter-spacing: .2em;
+  margin-bottom: 10px;
+}
+
+.expedition-label .sub {
+  color: var(--red);
+  font-size: 9px;
+  letter-spacing: .2em;
   line-height: 1.8;
 }
 
-#imageModal {
-  display: none;
+/* IMAGE LIGHTBOX */
+
+.lightbox {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(0,0,0,.94);
+  display: none;
   align-items: center;
   justify-content: center;
-  padding: 25px;
+  padding: 35px;
+  background: rgba(0,0,0,.94);
+  cursor: zoom-out;
 }
 
-#imageModal.open { display: flex; }
+.lightbox.open { display: flex; }
 
-#imageModal img {
-  max-width: 90%;
-  max-height: 85vh;
+.lightbox img {
+  max-width: 95vw;
+  max-height: 90vh;
   object-fit: contain;
   border: 1px solid var(--line);
 }
 
-#imageModal button {
+.lightbox-close {
   position: absolute;
-  top: 25px;
+  top: 20px;
   right: 25px;
+  color: white;
+  font-size: 25px;
 }
 
-.progress-track {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: var(--red);
-  width: 0%;
-  z-index: 200;
-}
+/* FOOTER */
 
-.back-top {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 20;
-  opacity: .8;
-}
-
-footer {
-  padding: 55px 20px;
+.footer {
+  padding: 65px 20px;
   text-align: center;
   border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: .58rem;
+  background: #080709;
+}
+
+.footer-mark {
+  font-family: var(--serif);
+  color: var(--red);
+  font-size: 27px;
+  margin-bottom: 18px;
+}
+
+.footer p {
+  color: var(--dim);
+  font-size: 8px;
   letter-spacing: .2em;
-  line-height: 2.5;
+  line-height: 2.2;
 }
 
-@media (max-width: 700px) {
-  header { min-height: 80vh; }
-  .status-panel { grid-template-columns: repeat(2, 1fr); }
-  .featured { grid-template-columns: 1fr; }
-  .section-head { align-items: flex-start; flex-direction: column; }
-  .search-row { flex-direction: column; }
-  .record { min-height: 0; }
+.no-results {
+  display: none;
+  padding: 50px 0;
+  color: var(--red);
+  font-size: 10px;
+  letter-spacing: .2em;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .layout { grid-template-columns: 1fr; }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+    padding: 18px 20px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
   }
+
+  .side-title { font-size: 20px; }
+
+  .side-description { margin-bottom: 15px; }
+
+  .side-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: 180px;
+    overflow-y: auto;
+  }
+
+  .side-bottom { display: none; }
+
+  .content { padding: 0 24px; }
+
+  .hero { height: 75vh; min-height: 500px; }
+}
+
+@media (max-width: 560px) {
+  .topbar { padding: 0 14px; font-size: 7px; }
+
+  .hero h1 { font-size: 35px; }
+
+  .hero-subtitle { font-size: 8px; }
+
+  .content { padding: 0 17px; }
+
+  .entry { padding: 48px 0; }
+
+  .entry h2 { font-size: 28px; }
+
+  .plate {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .plate-image { height: 300px; }
+
+  .data-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .factgrid { grid-template-columns: 1fr; }
+
+  .entry-top { align-items: flex-start; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="progress-track" id="progress"></div>
+<div class="topbar">
+  <span><strong>BLACK SIGNAL</strong> / RESEARCH DIVISION</span>
+  <span>ARCHIVE STATUS :: ACTIVE</span>
+</div>
 
-<header id="top">
-  <div class="header-code">BSI // ARCHIVAL NETWORK // EST. 2026</div>
-  <div class="title">BLACK SIGNAL<br>SURVEILLANCE INSTITUTE</div>
-  <div class="subtitle">
-    HISTORICAL DEMONOLOGY / RELIGIOUS HISTORY / OCCULT TEXTS /
-    MATERIAL CULTURE / BIBLIOGRAPHIC INDEX SYSTEM
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">NOCTURNE COLLECTION / INSTITUTE ARCHIVES</div>
+    <h1>BLACK SIGNAL <span>Surveillance Institute</span></h1>
+    <div class="hero-subtitle">
+      HISTORICAL DEMONOLOGY TEXTS<br>
+      RELIGIOUS ARTIFACTS / OCCULT HISTORY<br>
+      BIBLIOGRAPHIC INDEX SYSTEM
+    </div>
+    <div class="hero-status">SYSTEM BOOT :: ARCHIVAL MODE INITIALIZED</div>
+    <div class="hero-mark" id="sigilText">⟡</div>
   </div>
-  <div class="boot">SYSTEM BOOT: ARCHIVAL MODE INITIALIZED</div>
-  <div class="sigil" id="sigilText" title="Generate another signal">⟡</div>
-  <div class="scroll-cue">SCROLL TO ACCESS DATABASE ↓</div>
 </header>
 
-<main>
+<div class="layout">
 
-<section id="status">
-  <div class="section-head">
-    <h2>INSTITUTE STATUS</h2>
-    <span>SYS.MONITOR // 001</span>
+<aside class="sidebar">
+  <div class="side-label">INSTITUTE / 001</div>
+  <div class="side-title">Nocturne Index</div>
+  <div class="side-description">
+    A catalog of historical texts, religious imagery, archaeological investigations, and contemporary symbolic publications.
   </div>
 
-  <div class="status-panel">
-    <div class="status-item">
-      <div class="status-label">ARCHIVE CONDITION</div>
-      <div class="status-value">OPERATIONAL</div>
-    </div>
-    <div class="status-item">
-      <div class="status-label">DOCUMENTS CATALOGUED</div>
-      <div class="status-value" id="totalRecords">0000</div>
-    </div>
-    <div class="status-item">
-      <div class="status-label">ACTIVE DEPARTMENTS</div>
-      <div class="status-value" id="totalDepartments">0000</div>
-    </div>
-    <div class="status-item">
-      <div class="status-label">DATABASE ACCESS</div>
-      <div class="status-value">PUBLIC INDEX</div>
-    </div>
-    <div class="status-item">
-      <div class="status-label">RESEARCH CLASSIFICATION</div>
-      <div class="status-value">HISTORICAL</div>
-    </div>
-    <div class="status-item">
-      <div class="status-label">DATABASE VERSION</div>
-      <div class="status-value">0.3.0</div>
-    </div>
+  <div class="side-label">CATALOG ENTRIES</div>
+  <nav class="side-nav">
+    <a href="#entry-0019"><span>19</span> Derinkuyu</a>
+    <a href="#entry-0018"><span>18</span> Sepia Stains</a>
+    <a href="#jigoku"><span>—</span> Jigoku Dayū</a>
+    <a href="#robe"><span>—</span> Robe of Hell</a>
+    <a href="#wara"><span>—</span> Wara Ningyō</a>
+    <a href="#entry-0015"><span>15</span> Serenity Arcana</a>
+    <a href="#entry-0014"><span>14</span> Silver Tarot</a>
+    <a href="#entry-0013"><span>13</span> Singing Serpent</a>
+    <a href="#entry-0012"><span>12</span> Santa Prisca</a>
+    <a href="#entry-0011"><span>11</span> Stitch Rabbit</a>
+    <a href="#entry-0010"><span>10</span> Lumen de Lumine</a>
+    <a href="#entry-0009"><span>09</span> Templar Trial</a>
+    <a href="#entry-0008"><span>08</span> Fukoumori</a>
+    <a href="#entry-0007"><span>07</span> Sun Angel</a>
+    <a href="#entry-0006"><span>06</span> Slumberland</a>
+    <a href="#entry-0005"><span>05</span> Green Dream</a>
+    <a href="#entry-0004"><span>04</span> Sirius Tarot</a>
+    <a href="#entry-0003"><span>03</span> Sinister Tarot</a>
+    <a href="#entry-0002"><span>02</span> Clavis Artis</a>
+    <a href="#entry-0001"><span>01</span> Pseudomonarchia</a>
+  </nav>
+
+  <div class="side-bottom">
+    BLACK SIGNAL SURVEILLANCE INSTITUTE<br>
+    DOCUMENT INDEX / 0001—0019<br>
+    ARCHIVAL REPOSITORY
   </div>
+</aside>
+
+<main class="content">
+
+<div class="collection-header">
+  <div class="eyebrow">COLLECTION / DIGITAL REPOSITORY</div>
+  <h2>Research Archive</h2>
+  <p>
+    Historical records, archaeological case studies, manuscript references, religious iconography, and contemporary tarot publications. Select an entry to examine its catalog record and associated visual material.
+  </p>
+  <div class="collection-tools">
+    <div class="search-wrap">
+      <input id="archiveSearch" type="search" placeholder="SEARCH THE ARCHIVE / TITLE / SUBJECT / ARTIST">
+    </div>
+    <div class="collection-count" id="resultCount">20 RECORDS</div>
+  </div>
+</div>
+
+<div class="no-results" id="noResults">NO MATCHING ARCHIVE RECORDS FOUND.</div>
+
+<!-- ENTRY 0019 -->
+
+<section class="entry" id="entry-0019">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0019</span>
+    <span class="entry-type">ARCHAEOLOGICAL EXPEDITION</span>
+  </div>
+  <h2>Expedition to the Underground City of Derinkuyu</h2>
+
+  <p>
+    Derinkuyu is an extensive underground city carved into the volcanic rock of Cappadocia, in
+    central Anatolia, present-day Türkiye. Extending through multiple subterranean levels, the
+    settlement contains concealed passageways, ventilation shafts, storage chambers, wells, and
+    massive circular stone doors designed to restrict access between connected spaces. Its
+    architecture reveals a complex environment constructed beneath the surface, where entire
+    communities could seek shelter from external threats.
+  </p>
+
+  <p>
+    The underground complex incorporates interconnected corridors, residential chambers, communal
+    spaces, and specialized areas for food storage and daily activity. Narrow passageways and
+    strategically positioned stone barriers created defensive bottlenecks, while ventilation shafts
+    carried air into the deeper levels. These systems demonstrate how subterranean architecture
+    could support extended periods of occupation while limiting exposure to the world above.
+  </p>
+
+  <div class="expedition-label">
+    <div class="main">ARCHAEOLOGICAL EXPEDITION DOSSIER</div>
+    <div class="sub">CAPPADOCIA — SUBTERRANEAN SETTLEMENT INVESTIGATION</div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>DATE</span><div>ANCIENT ORIGINS — MODERN REDISCOVERY, 1963</div></div>
+    <div class="data-cell"><span>LOCATION</span><div>DERINKUYU, CAPPADOCIA, TÜRKİYE</div></div>
+    <div class="data-cell"><span>TYPE</span><div>ARCHAEOLOGICAL EXPEDITION</div></div>
+    <div class="data-cell"><span>SUBJECT</span><div>SUBTERRANEAN CIVILIZATION</div></div>
+    <div class="data-cell"><span>DISCOVERY</span><div>MULTILEVEL UNDERGROUND CITY</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>SUBTERRANEAN ARCHITECTURE DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    The city's defensive architecture centers on its concealed entrances, constricted corridors,
+    and enormous circular stone doors that could be rolled into position from within. These
+    barriers separated sections of the settlement and restricted movement through its internal
+    network. Ventilation shafts extended through the subterranean structure, supplying air to
+    inhabited levels and serving additional functions, including access to water in some parts
+    of the complex. The relationship between these systems illustrates the engineering required
+    to sustain life beneath the surface.
+  </p>
+
+  <p>
+    Cappadocia's distinctive volcanic geology made it possible to excavate extensive spaces from
+    relatively soft rock. Although the region's underground settlements developed over long
+    periods and their earliest phases remain subjects of archaeological investigation, Derinkuyu
+    became particularly important as a refuge during periods of instability. Its interconnected
+    chambers offered protection for inhabitants, livestock, and supplies, transforming the
+    underground environment into a functional extension of the inhabited landscape above.
+  </p>
+
+  <p>
+    Rediscovered in 1963 after a local resident uncovered a hidden chamber during renovations,
+    Derinkuyu subsequently became one of the best-known examples of subterranean settlement
+    architecture. Its surviving passages and chambers provide evidence of how communities
+    adapted their environments to conditions requiring concealment, controlled access, and
+    prolonged shelter. The city's depth and complexity continue to raise questions about the
+    organization, maintenance, and historical use of underground living spaces.
+  </p>
+
+  <p>
+    NOTE: This archive classifies Derinkuyu as a major case study in the architecture of survival
+    beneath the surface. Concealed passageways, ventilation shafts, sealed stone doors, and
+    interconnected chambers reveal a built environment organized around protection, resource
+    management, and controlled movement. The underground city remains a significant record of
+    human adaptation to geological conditions and the enduring need for secure habitation.
+  </p>
 </section>
 
-<section id="terminal">
-  <div class="section-head">
-    <h2>ARCHIVE TERMINAL</h2>
-    <span>QUERY INTERFACE // 002</span>
+<!-- ENTRY 0018 -->
+
+<section class="entry" id="entry-0018">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0018</span>
+    <span class="entry-type">CONTEMPORARY TAROT INDEX</span>
   </div>
+  <h2>Sepia Stains Tarot</h2>
 
-  <div class="terminal">
-    <div class="terminal-top">
-      <span>BLACK SIGNAL :: SEARCH</span>
-      <span>LOCAL INDEX</span>
-    </div>
+  <p>
+    The Sepia Stains Tarot is a contemporary tarot deck created by the American artist Bethalynne
+    Bajema. The work is distinguished by its digitally constructed collage aesthetic, combining
+    found imagery, layered textures, antique visual references, and symbolic composition into a
+    deliberately aged sepia-toned visual language. Its imagery creates an atmosphere of historical
+    fragments, mystery, decay, and esoteric transformation through the juxtaposition of disparate
+    visual materials.
+  </p>
 
-    <div class="search-row">
-      <input
-        type="search"
-        id="searchInput"
-        placeholder="SEARCH SUBJECT / PERIOD / KEYWORD / ARCHIVE ID..."
-        aria-label="Search archive"
-      >
-      <button id="clearSearch">CLEAR QUERY</button>
-    </div>
+  <p>
+    Rather than functioning as a reconstruction of a specific historical tarot tradition, the Sepia
+    Stains Tarot belongs to the modern tradition of artist-created tarot. Its digital collage medium
+    allows photographic, illustrative, ornamental, and archival elements to be recombined into new
+    symbolic arrangements. The resulting deck occupies a space between contemporary digital art,
+    collage, historical visual culture, and tarot practice, using the appearance of aged materials
+    as part of its symbolic vocabulary.
+  </p>
 
-    <div class="filters" id="filters">
-      <button class="filter active" data-filter="all">ALL RECORDS</button>
-      <button class="filter" data-filter="demonology">DEMONOLOGY</button>
-      <button class="filter" data-filter="alchemy">ALCHEMY</button>
-      <button class="filter" data-filter="japanese">JAPANESE RELIGION</button>
-      <button class="filter" data-filter="archaeology">ARCHAEOLOGY</button>
-      <button class="filter" data-filter="tarot">TAROT</button>
-      <button class="filter" data-filter="manuscripts">MANUSCRIPTS</button>
-    </div>
-
-    <div class="result-line" id="resultCount" aria-live="polite">
-      QUERY READY // DISPLAYING ALL RECORDS
-    </div>
-  </div>
-</section>
-
-<section id="departments">
-  <div class="section-head">
-    <h2>RESEARCH DEPARTMENTS</h2>
-    <span>CLASSIFICATION INDEX // 003</span>
-  </div>
-
-  <div class="department-grid">
-    <div class="department" data-department="demonology">
-      <div class="department-no">DEPT. 001</div>
-      <h3>INFERNAL TAXONOMY</h3>
-      <p>Historical demonology, grimoires, spirit catalogues.</p>
-    </div>
-
-    <div class="department" data-department="alchemy">
-      <div class="department-no">DEPT. 002</div>
-      <h3>ALCHEMICAL LABORATORY</h3>
-      <p>Alchemy, transformation, symbolic manuscripts.</p>
-    </div>
-
-    <div class="department" data-department="japanese">
-      <div class="department-no">DEPT. 003</div>
-      <h3>JAPANESE RELIGIOUS ARCHIVE</h3>
-      <p>Folklore, Buddhist imagery, ritual objects.</p>
-    </div>
-
-    <div class="department" data-department="archaeology">
-      <div class="department-no">DEPT. 004</div>
-      <h3>SUBTERRANEAN STUDIES</h3>
-      <p>Archaeological sites, underground structures.</p>
-    </div>
-
-    <div class="department" data-department="tarot">
-      <div class="department-no">DEPT. 005</div>
-      <h3>DIVINATION ARCHIVE</h3>
-      <p>Tarot history, card imagery, contemporary decks.</p>
-    </div>
-
-    <div class="department" data-department="manuscripts">
-      <div class="department-no">DEPT. 006</div>
-      <h3>FORBIDDEN BIBLIOGRAPHY</h3>
-      <p>Historical texts, occult publishing, rare documents.</p>
-    </div>
-  </div>
-</section>
-
-<section id="featured">
-  <div class="section-head">
-    <h2>FEATURED INVESTIGATION</h2>
-    <span>SELECTED DOSSIER // 004</span>
-  </div>
-
-  <div class="featured">
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/Sepia_Stains.jpg" alt="Sepia Stains Tarot by Bethalynne Bajema cover">
     <div>
-      <div class="eyebrow">CURRENT RESEARCH / ARCHAEOLOGY</div>
-      <h3>DERINKUYU<br>THE UNDERGROUND CITY</h3>
-      <p>
-        An examination of the subterranean settlement at Derinkuyu
-        in Cappadocia, Turkey. Its interconnected chambers,
-        ventilation shafts, storage areas, and defensive features
-        provide evidence of complex underground habitation.
-      </p>
-      <p>
-        The site is considered within its archaeological and
-        historical context, with attention to the practical
-        functions of underground architecture.
-      </p>
-      <button onclick="showRecord('derinkuyu')">OPEN INVESTIGATION</button>
+      <div class="plate-caption">CONTEMPORARY TAROT INDEX</div>
+      <div class="plate-title">Sepia Stains</div>
+      <div class="plate-description">DIGITAL COLLAGE WORK — BETHALYNNE BAJEMA</div>
     </div>
-    <div class="featured-visual">⌖</div>
-  </div>
-</section>
-
-<section id="archive">
-  <div class="section-head">
-    <h2>ARCHIVAL DOSSIERS</h2>
-    <span>RECORD INDEX // 005</span>
   </div>
 
-  <div class="archive-grid" id="archiveGrid">
-
-    <article class="record" id="derinkuyu" data-id="0019"
-      data-category="archaeology"
-      data-tags="derinkuyu underground city cappadocia archaeology architecture">
-      <div class="record-meta">ARCHIVE 0019 // ARCHAEOLOGY</div>
-      <h3>Derinkuyu Underground City</h3>
-      <p>
-        A subterranean settlement in Cappadocia, Turkey, known
-        for its extensive network of rooms, ventilation shafts,
-        storage spaces, and defensive architecture.
-      </p>
-      <div class="record-footer">
-        <div class="tags">
-          <span class="tag">Archaeology</span>
-          <span class="tag">Architecture</span>
-          <span class="tag">Cappadocia</span>
-        </div>
-        <div class="research-status">STATUS // HISTORICALLY DOCUMENTED</div>
-        <div class="record-actions">
-          <button onclick="showRecord('derinkuyu')">DOSSIER</button>
-          <button onclick="related('derinkuyu')">RELATED</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="record" id="sepia-stains" data-id="0018"
-      data-category="tarot"
-      data-tags="sepia stains tarot bethalynne bajema collage contemporary">
-      <div class="record-meta">ARCHIVE 0018 // CONTEMPORARY TAROT</div>
-      <h3>Sepia Stains Tarot</h3>
-      <p>
-        A contemporary tarot deck by Bethalynne Bajema.
-        Its digitally constructed collage aesthetic combines
-        found imagery, layered textures, antique references,
-        and symbolic compositions.
-      </p>
-      <div class="record-footer">
-        <div class="tags">
-          <span class="tag">Tarot</span>
-          <span class="tag">Digital collage</span>
-          <span class="tag">Contemporary art</span>
-        </div>
-        <div class="research-status interpretive">STATUS // CONTEMPORARY ART RECORD</div>
-        <div class="record-actions">
-          <button onclick="showRecord('sepia-stains')">DOSSIER</button>
-          <button onclick="related('sepia-stains')">RELATED</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="record" id="jigoku-dayu" data-id="0017"
-      data-category="japanese"
-      data-tags="jigoku dayu japanese folklore buddhism hell art">
-      <div class="record-meta">ARCHIVE 0017 // JAPANESE RELIGIOUS CULTURE</div>
-      <h3>Jigoku Dayū</h3>
-      <p>
-        The legendary Hell Courtesan, associated with Japanese
-        Buddhist imagery and narratives of impermanence,
-        suffering, and the Buddhist hell realms.
-      </p>
-      <div class="record-footer">
-        <div class="tags">
-          <span class="tag">Japanese folklore</span>
-          <span class="tag">Buddhism</span>
-          <span class="tag">Iconography</span>
-        </div>
-        <div class="research-status fragmentary">STATUS // LEGENDARY TRADITION</div>
-        <div class="record-actions">
-          <button onclick="showRecord('jigoku-dayu')">DOSSIER</button>
-          <button onclick="related('jigoku-dayu')">RELATED</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="record" id="robe-hell" data-id="0016"
-      data-category="japanese"
-      data-tags="robe hell buddhism jigoku japanese clothing iconography">
-      <div class="record-meta">ARCHIVE 0016 // MATERIAL CULTURE</div>
-      <h3>The Robe of Hell</h3>
-      <p>
-        A study of garments and visual representations associated
-        with Buddhist hell imagery, punishment narratives,
-        and Japanese religious art.
-      </p>
-      <div class="record-footer">
-        <div class="tags">
-          <span class="tag">Japanese religion</span>
-          <span class="tag">Material culture</span>
-          <span class="tag">Hell imagery</span>
-        </div>
-        <div class="research-status fragmentary">STATUS // ICONOGRAPHIC STUDY</div>
-        <div class="record-actions">
-          <button onclick="showRecord('robe-hell')">DOSSIER</button>
-          <button onclick="related('robe-hell')">RELATED</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="record" id="wara-ningyo" data-id="0015"
-      data-category="japanese"
-      data-tags="wara ningyo straw doll japanese ritual folklore">
-      <div class="record-meta">ARCHIVE 0015 // JAPANESE FOLK PRACTICE</div>
-      <h3>Wara Ningyō</h3>
-      <p>
-        Straw figures appearing in Japanese folk practices and
-        popular representations of ritual cursing. Their cultural
-        significance varies across regional traditions and
-        modern media depictions.
-      </p>
-      <div class="record-footer">
-        <div class="tags">
-          <span class="tag">Japanese folklore</span>
-          <span class="tag">Ritual objects</span>
-          <span class="tag">Material culture</span>
-        </div>
-        <div class="research-status fragmentary">STATUS // FOLKLORE RECORD</div>
-        <div class="record-actions">
-          <button onclick="showRecord('wara-ningyo')">DOSSIER</button>
-          <button onclick="related('wara-ningyo')">RELATED</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="record" id="mithraeum" data-id="0014"
-      data-category="archaeology"
-      data-tags="mithraeum santa prisca rome mithras archaeology religion">
-      <div class="record-meta">ARCHIVE 0014 // ROMAN RELIGION</div>
-      <h3>Mithraeum of Santa Prisca</h3>
-      <p>
-        An archaeological site in Rome associated with the
-        Roman cult of Mithras. Its surviving decorative program
-        offers evidence for the religious imagery and spatial
-        practices of Mithraic communities.
-      </p>
-      <div class="record-footer">
-        <div class="tags">
-          <span class="tag">Roman religion</span>
-          <span class="tag">Archaeology</span>
-          <span class="tag">Mithraism</span>
-        </div>
-        <div class="research-status">STATUS // ARCHAEOLOGICALLY DOCUMENTED</div>
-        <div class="record-actions">
-          <button onclick="showRecord('mithraeum')">DOSSIER</button>
-          <button onclick="related('mithraeum')">RELATED</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="record" id="alchemical-texts" data-id="0013"
-      data-category="alchemy manuscripts"
-      data-tags="alchemy manuscripts hermetic texts transformation">
-      <div class="record-meta">ARCHIVE 0013 // ALCHEMICAL LITERATURE</div>
-      <h3>Alchemical Texts and Symbolic Systems</h3>
-      <p>
-        A bibliographic investigation of alchemical manuscripts,
-        symbolic operations, material transformation, and
-        historical interpretations of the alchemical arts.
-      </p>
-      <div class="record-footer">
-        <div class="tags">
-          <span class="tag">Alchemy</span>
-          <span class="tag">Manuscripts</span>
-          <span class="tag">Hermetic literature</span>
-        </div>
-        <div class="research-status fragmentary">STATUS // TEXTUAL SURVEY</div>
-        <div class="record-actions">
-          <button onclick="showRecord('alchemical-texts')">DOSSIER</button>
-          <button onclick="related('alchemical-texts')">RELATED</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="record" id="templar-trial" data-id="0012"
-      data-category="manuscripts"
-      data-tags="templar trial inquisition medieval history documents">
-      <div class="record-meta">ARCHIVE 0012 // MEDIEVAL HISTORY</div>
-      <h3>The Templar Trial</h3>
-      <p>
-        An examination of the proceedings against the Knights
-        Templar, including interrogation records, accusations,
-        political context, and the dissolution of the order.
-      </p>
-      <div class="record-footer">
-        <div class="tags">
-          <span class="tag">Medieval history</span>
-          <span class="tag">Trial records</span>
-          <span class="tag">Manuscripts</span>
-        </div>
-        <div class="research-status">STATUS // DOCUMENTED HISTORICAL EVENT</div>
-        <div class="record-actions">
-          <button onclick="showRecord('templar-trial')">DOSSIER</button>
-          <button onclick="related('templar-trial')">RELATED</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="record" id="demonology" data-id="0011"
-      data-category="demonology manuscripts"
-      data-tags="demonology spirits grimoires historical taxonomy">
-      <div class="record-meta">ARCHIVE 0011 // DEMONOLOGY</div>
-      <h3>Historical Demonological Taxonomies</h3>
-      <p>
-        A comparative study of the classification of spirits
-        in European demonological literature, including the
-        development of catalogues, hierarchies, and attributed
-        supernatural offices.
-      </p>
-      <div class="record-footer">
-        <div class="tags">
-          <span class="tag">Demonology</span>
-          <span class="tag">Grimoires</span>
-          <span class="tag">Classification</span>
-        </div>
-        <div class="research-status fragmentary">STATUS // COMPARATIVE RESEARCH</div>
-        <div class="record-actions">
-          <button onclick="showRecord('demonology')">DOSSIER</button>
-          <button onclick="related('demonology')">RELATED</button>
-        </div>
-      </div>
-    </article>
-
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>CONTEMPORARY TAROT DECK</div></div>
+    <div class="data-cell"><span>ARTIST</span><div>BETHALYNNE BAJEMA</div></div>
+    <div class="data-cell"><span>MEDIUM</span><div>DIGITAL COLLAGE</div></div>
+    <div class="data-cell"><span>STYLE</span><div>SEPIA / ARCHIVAL / COLLAGE</div></div>
+    <div class="data-cell"><span>STATUS</span><div>MODERN ART DECK</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>TAROT DOSSIER FILE</div></div>
   </div>
 
-  <div class="result-line" id="emptyState" hidden>
-    NO MATCHING RECORDS // MODIFY SEARCH PARAMETERS
-  </div>
-</section>
-
-<section id="random">
-  <div class="section-head">
-    <h2>RANDOM DOSSIER GENERATOR</h2>
-    <span>UNPREDICTABLE ACCESS // 006</span>
-  </div>
   <p>
-    Retrieve a randomly selected record from the institute's
-    currently indexed collection.
+    NOTE: The Sepia Stains Tarot is catalogued as a contemporary digital collage tarot system
+    distinguished by its aged visual treatment, layered imagery, and symbolic recombination of
+    historical and fantastical elements. The archive classifies the deck as a modern interpretive
+    work in which digital collage functions as both artistic medium and visual language.
   </p>
-  <button id="randomButton">GENERATE RANDOM DOSSIER</button>
-  <div id="randomResult" aria-live="polite">
-    AWAITING QUERY...
-  </div>
 </section>
 
-<section id="crossrefs">
-  <div class="section-head">
-    <h2>CROSS-REFERENCE NETWORK</h2>
-    <span>ASSOCIATION INDEX // 007</span>
+<!-- JIGOKU DAYU -->
+
+<section class="entry" id="jigoku">
+  <div class="entry-top">
+    <span class="entry-number">CULTURAL RECORD / J-01</span>
+    <span class="entry-type">JAPANESE CULTURAL INDEX</span>
   </div>
+
+  <div class="entry-label">HISTORICAL ARCHIVE — MUROMACHI PERIOD</div>
+  <h2>Jigoku Dayū</h2>
+  <div class="microtag">地獄太夫</div>
+
+  <img class="feature-image portrait" src="https://i.pinimg.com/1200x/49/25/78/4925788e2a13d362c20ef207b6674bac.jpg" alt="Jigoku Dayū">
+
   <p>
-    Select a subject to reveal records sharing a department,
-    historical context, or research classification.
+    Jigoku Dayū occupies one of the most distinctive positions within Japanese Zen folklore. Known as the Hell Courtesan, she became a symbol of confronting impermanence rather than fleeing it. Her legend survives through painting, literature, and Zen tradition, where worldly existence itself becomes the setting for awakening.
   </p>
-  <div class="crossref-list">
-    <button class="crossref" onclick="related('jigoku-dayu')">JAPANESE HELL IMAGERY</button>
-    <button class="crossref" onclick="related('derinkuyu')">ARCHAEOLOGICAL SITES</button>
-    <button class="crossref" onclick="related('alchemical-texts')">OCCULT MANUSCRIPTS</button>
-    <button class="crossref" onclick="related('demonology')">SPIRIT TAXONOMIES</button>
-    <button class="crossref" onclick="related('sepia-stains')">DIVINATION & SYMBOLISM</button>
+
+  <div class="factgrid">
+    <div><span>TRANSLATION</span>Hell Courtesan</div>
+    <div><span>TRADITION</span>Zen Folklore</div>
+    <div><span>ASSOCIATED MASTER</span>Ikkyū Sōjun</div>
+    <div><span>PERIOD</span>Muromachi Tradition</div>
+    <div><span>HISTORICAL STATUS</span>Legendary Figure</div>
+    <div><span>PRIMARY SOURCES</span>Zen Literature</div>
+    <div><span>CULTURAL LEGACY</span>Painting</div>
+    <div><span>SYMBOL</span>Impermanence</div>
   </div>
-  <div id="relatedResult" class="method-note" style="margin-top:16px">
-    CROSS-REFERENCE NETWORK IDLE.
-  </div>
+
+  <div class="divider"></div>
+  <h3>ARCHIVAL NOTE</h3>
+  <p>
+    Although preserved through legend rather than documented biography, Jigoku Dayū remains one of the most recognizable women in Japanese religious art. Later painters repeatedly depicted her dialogue with Ikkyū as an encounter between worldly existence and Zen realization.
+  </p>
 </section>
 
-<section id="sources">
-  <div class="section-head">
-    <h2>PRIMARY SOURCE LIBRARY</h2>
-    <span>BIBLIOGRAPHIC INDEX // 008</span>
+<!-- ROBE OF HELL -->
+
+<section class="entry" id="robe">
+  <div class="entry-top">
+    <span class="entry-number">ICONOGRAPHIC RECORD / J-02</span>
+    <span class="entry-type">JAPANESE CULTURAL INDEX</span>
   </div>
 
-  <div class="source-list">
-    <div class="source">
-      <strong>01 // Internet Archive</strong><br>
-      Digitized books, historical publications, and archival material.
-      <br><a href="https://archive.org/" target="_blank" rel="noopener">ACCESS DIGITAL COLLECTION ↗</a>
-    </div>
+  <div class="entry-label">ICONOGRAPHIC STUDY</div>
+  <h2>The Robe of Hell</h2>
+  <div class="microtag">BUDDHIST COSMOLOGY</div>
 
-    <div class="source">
-      <strong>02 // Gallica — Bibliothèque nationale de France</strong><br>
-      Digitized manuscripts, books, prints, and historical documents.
-      <br><a href="https://gallica.bnf.fr/" target="_blank" rel="noopener">ACCESS GALlica ↗</a>
-    </div>
+  <img class="feature-image" src="https://upload.wikimedia.org/wikipedia/commons/7/71/Kawanabe_Ky%C5%8Dsai%2C_Hell_Courtesan_(Jigoku-day%C5%AB).jpg" alt="The Robe of Hell">
 
-    <div class="source">
-      <strong>03 // Wellcome Collection</strong><br>
-      Historical collections concerning medicine, science, and culture.
-      <br><a href="https://wellcomecollection.org/" target="_blank" rel="noopener">ACCESS COLLECTION ↗</a>
-    </div>
+  <p>
+    The robe associated with Jigoku Dayū is embroidered with scenes drawn from Buddhist cosmology. Flames, demons, skeletons, the courts of King Enma, and the infernal realms transform the garment into a visual manuscript. Rather than functioning as ornament, the robe presents suffering as knowledge and impermanence as the foundation of spiritual inquiry.
+  </p>
 
-    <div class="source">
-      <strong>04 // The British Library</strong><br>
-      Manuscript collections, historical texts, and research resources.
-      <br><a href="https://www.bl.uk/" target="_blank" rel="noopener">ACCESS LIBRARY ↗</a>
-    </div>
-
-    <div class="source">
-      <strong>05 // Perseus Digital Library</strong><br>
-      Digital access to classical texts and historical resources.
-      <br><a href="https://www.perseus.tufts.edu/" target="_blank" rel="noopener">ACCESS TEXT ARCHIVE ↗</a>
-    </div>
-
-    <div class="source">
-      <strong>06 // World History Encyclopedia</strong><br>
-      Historical overviews and contextual reference material.
-      <br><a href="https://www.worldhistory.org/" target="_blank" rel="noopener">ACCESS REFERENCE ↗</a>
-    </div>
+  <div class="factgrid">
+    <div><span>MEDIUM</span>Silk Embroidery</div>
+    <div><span>SUBJECT</span>Infernal Realms</div>
+    <div><span>AUTHORITY</span>King Enma</div>
+    <div><span>MOTIFS</span>Flames and Skeletons</div>
+    <div><span>PHILOSOPHY</span>Impermanence</div>
+    <div><span>VISUAL LANGUAGE</span>Narrative Textile</div>
+    <div><span>RELIGIOUS CONTEXT</span>Buddhist Cosmology</div>
+    <div><span>FUNCTION</span>Contemplative Symbol</div>
   </div>
+
+  <div class="divider"></div>
+  <h3>CURATORIAL NOTE</h3>
+  <p>
+    Across Japanese painting, the robe becomes more than clothing. It operates as a portable cosmology in which the imagery of hell serves as a reminder that enlightenment is sought through direct awareness of existence rather than separation from it.
+  </p>
 </section>
 
-<section id="method">
-  <div class="section-head">
-    <h2>RESEARCH PROTOCOL</h2>
-    <span>METHOD NOTES // 009</span>
+<!-- WARA NINGYO -->
+
+<section class="entry" id="wara">
+  <div class="entry-top">
+    <span class="entry-number">OBJECT RECORD / J-03</span>
+    <span class="entry-type">CONTEMPORARY OCCULT INDEX</span>
   </div>
 
-  <div class="method-note">
-    <p>
-      <strong>HISTORICAL DOCUMENTATION:</strong>
-      Records should distinguish surviving historical evidence
-      from later interpretations, folklore, and contemporary
-      reconstructions.
-    </p>
-    <p>
-      <strong>ICONOGRAPHIC ANALYSIS:</strong>
-      Visual representations are examined in relation to their
-      cultural, religious, and historical contexts.
-    </p>
-    <p>
-      <strong>DEMONOLOGICAL CLASSIFICATION:</strong>
-      Spirit names, hierarchies, and attributes are catalogued
-      according to the specific texts and traditions in which
-      they appear. Different sources may disagree.
-    </p>
-    <p>
-      <strong>SOURCE INTEGRITY:</strong>
-      A historical claim should be traceable to a publication,
-      manuscript, archaeological record, or credible research
-      institution. Unverified interpretations should remain
-      identified as such.
-    </p>
-    <p>
-      <strong>RESEARCH STATUS:</strong>
-      HISTORICALLY DOCUMENTED indicates evidence supported by
-      historical or archaeological records. FRAGMENTARY indicates
-      incomplete or disputed evidence. INTERPRETIVE indicates
-      modern artistic, symbolic, or analytical interpretation.
-    </p>
+  <div class="entry-label">RITUAL OBJECT — WARA NINGYŌ (藁人形)</div>
+  <h2>Wara Ningyō</h2>
+
+  <img class="feature-image portrait" src="https://i.pinimg.com/1200x/f3/65/32/f3653254c7acad2626c61d2192096edd.jpg" alt="Traditional Wara Ningyō ritual effigy">
+
+  <div class="factgrid">
+    <div><span>CLASSIFICATION</span>Ritual Effigy</div>
+    <div><span>ORIGIN</span>Japanese Folk Tradition</div>
+    <div><span>KANJI</span>藁人形</div>
+    <div><span>TRANSLATION</span>Straw Doll</div>
+    <div><span>MATERIAL</span>Bound Rice Straw</div>
+    <div><span>ASSOCIATED RITE</span>Ushi no Toki Mairi (Hour of the Ox Shrine Ritual)</div>
+    <div><span>PRIMARY FUNCTION</span>Symbolic Human Surrogate</div>
+    <div><span>SYMBOLISM</span>Identity Substitution, Curse Transference, Ritual Correspondence</div>
+    <div><span>HISTORICAL PERIOD</span>Edo Period Documentation, Earlier Folk Origins</div>
+    <div><span>STATUS</span>Documented Ritual Object</div>
   </div>
+
+  <p>
+    The <em>wara ningyō</em> is a hand bound effigy constructed from rice straw and used as a symbolic stand in for an individual within Japanese folk ritual. Most closely associated with the <em>Ushi no Toki Mairi</em> tradition, the figure functions as a ritual surrogate through which intention is symbolically directed. Beyond its popular association with curse rites, the object represents a broader tradition of substitution, ritual correspondence, and embodied identity within Japanese religious and folkloric practice.
+  </p>
+</section>
+
+<!-- ENTRY 0015 -->
+
+<section class="entry" id="entry-0015">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0015</span>
+    <span class="entry-type">CONTEMPORARY TAROT INDEX</span>
+  </div>
+  <h2>Serenity Arcana</h2>
+
+  <p>
+    The Serenity Arcana is a contemporary tarot-inspired deck created by illustrator Beth Seilonen.
+    The work is distinguished by its ethereal visual language, blending soft luminosity, flowing
+    composition, and delicate figurative symbolism. Its imagery frequently centers on themes of
+    calm transformation, emotional clarity, and liminal introspection, rendered through a refined
+    palette of muted tones and atmospheric light.
+  </p>
+
+  <p>
+    Rather than adhering strictly to classical tarot iconography, the Serenity Arcana reinterprets
+    archetypal structures through a more intuitive and dreamlike framework. Traditional figures and
+    motifs are softened into symbolic impressions, emphasizing mood, resonance, and psychological
+    narrative over rigid esoteric correspondence systems. The result is a deck that operates as both
+    a contemplative art object and a modern interpretive oracle system.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/USA_Serenity.jpg" alt="Serenity Arcana">
+    <div>
+      <div class="plate-caption">CONTEMPORARY TAROT INDEX</div>
+      <div class="plate-title">Serenity Arcana</div>
+      <div class="plate-description">ARTIST PUBLICATION — BETH SEILONEN</div>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>CONTEMPORARY ORACLE / TAROT DECK</div></div>
+    <div class="data-cell"><span>ARTIST</span><div>BETH SEILONEN</div></div>
+    <div class="data-cell"><span>ORIGIN</span><div>INTERNATIONAL</div></div>
+    <div class="data-cell"><span>STYLE</span><div>ETHEREAL / ATMOSPHERIC / SOFT-PALETTE</div></div>
+    <div class="data-cell"><span>STATUS</span><div>MODERN ORACLE WORK</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>TAROT DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    NOTE: The Serenity Arcana is catalogued as a contemporary interpretive deck emphasizing emotional
+    resonance and atmospheric symbolism. The archive classifies the work as a modern oracle system
+    that prioritizes intuitive reading, visual softness, and contemplative narrative structure over
+    strict adherence to traditional tarot archetypes.
+  </p>
+</section>
+
+<!-- ENTRY 0014 -->
+
+<section class="entry" id="entry-0014">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0014</span>
+    <span class="entry-type">CONTEMPORARY TAROT INDEX</span>
+  </div>
+  <h2>Silver Tarot</h2>
+
+  <p>
+    The Silver Tarot is a contemporary tarot deck created by the Japanese illustrator Sumi Keiichi.
+    The work is recognized for its highly refined monochromatic aesthetic, combining intricate line
+    work, ornamental detail, and symbolic composition within a restrained silver-toned visual language.
+    Its imagery evokes themes of mystery, introspection, and archetypal transformation through a
+    carefully balanced fusion of fantasy illustration and esoteric symbolism.
+  </p>
+
+  <p>
+    Unlike historical tarot systems preserved through manuscript or print traditions, the Silver Tarot
+    belongs to the modern era of independent tarot artistry. The deck reinterprets familiar tarot
+    archetypes through elegant decorative forms, emphasizing atmosphere and visual symbolism over
+    adherence to any single historical occult lineage. The resulting body of work occupies a space
+    between contemporary illustration, symbolic art, and tarot practice.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/silver_tarot.jpg" alt="Silver Tarot by Sumi Keiichi cover">
+    <div>
+      <div class="plate-caption">CONTEMPORARY TAROT INDEX</div>
+      <div class="plate-title">Silver Tarot</div>
+      <div class="plate-description">ARTIST PUBLICATION — SUMI KEIICHI (JAPAN)</div>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>CONTEMPORARY TAROT DECK</div></div>
+    <div class="data-cell"><span>ARTIST</span><div>SUMI KEIICHI</div></div>
+    <div class="data-cell"><span>ORIGIN</span><div>JAPAN</div></div>
+    <div class="data-cell"><span>STYLE</span><div>MONOCHROMATIC / ORNAMENTAL</div></div>
+    <div class="data-cell"><span>STATUS</span><div>MODERN ART DECK</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>TAROT DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    NOTE: The Silver Tarot is catalogued as a contemporary artistic tarot system distinguished by
+    its detailed monochrome aesthetic and decorative symbolic imagery. The archive classifies the
+    deck as a modern interpretive work that emphasizes visual elegance, archetypal symbolism, and
+    atmospheric illustration rather than historical tarot reconstruction.
+  </p>
+</section>
+
+<!-- ENTRY 0013 -->
+
+<section class="entry" id="entry-0013">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0013</span>
+    <span class="entry-type">CONTEMPORARY TAROT INDEX</span>
+  </div>
+  <h2>Singing Serpent Tarot</h2>
+
+  <p>
+    The Singing Serpent Tarot is a contemporary tarot publication distinguished by its symbolic
+    synthesis of serpentine imagery, visionary illustration, and esoteric archetypal themes.
+    The deck draws upon the serpent as a recurring emblem of transformation, hidden knowledge,
+    cyclical renewal, and the transmission of wisdom across mythological and occult traditions.
+  </p>
+
+  <p>
+    Within the archive, the deck is catalogued as a modern artistic tarot system whose visual
+    language emphasizes symbolic narrative rather than strict adherence to historical tarot
+    reconstruction. The imagery combines mystical motifs, dreamlike composition, and archetypal
+    figures to create an atmosphere suggestive of initiation, metamorphosis, and inner revelation.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/UK_Singing_Serpent.jpg" alt="Singing Serpent Tarot cover">
+    <div>
+      <div class="plate-caption">CONTEMPORARY TAROT INDEX</div>
+      <div class="plate-title">Singing Serpent Tarot</div>
+      <div class="plate-description">SYMBOLIC SERPENT ARCHETYPE — MODERN TAROT PUBLICATION</div>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>CONTEMPORARY TAROT DECK</div></div>
+    <div class="data-cell"><span>THEME</span><div>SERPENT SYMBOLISM</div></div>
+    <div class="data-cell"><span>STYLE</span><div>VISIONARY / ESOTERIC ART</div></div>
+    <div class="data-cell"><span>MOTIFS</span><div>TRANSFORMATION &amp; REBIRTH</div></div>
+    <div class="data-cell"><span>STATUS</span><div>MODERN ART DECK</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>TAROT DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    NOTE: The Singing Serpent Tarot is catalogued as a contemporary symbolic tarot system.
+    Its visual identity centers upon the serpent archetype, a figure historically associated
+    with wisdom, initiation, regeneration, and occult knowledge. The archive treats the deck
+    as a modern interpretive work rather than a historical reconstruction of earlier tarot
+    traditions.
+  </p>
+</section>
+
+<!-- ENTRY 0012 -->
+
+<section class="entry" id="entry-0012">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0012</span>
+    <span class="entry-type">ARCHAEOLOGICAL EXPEDITION</span>
+  </div>
+  <h2>Expedition to the Mithraeum of Santa Prisca</h2>
+
+  <p>
+    The Mithraeum of Santa Prisca is an underground Roman temple dedicated to the mystery cult of
+    Mithras, located beneath the Basilica of Santa Prisca on Rome's Aventine Hill. Archaeological
+    investigations conducted during the twentieth century revealed a remarkably preserved ceremonial
+    complex concealed beneath later Christian construction.
+  </p>
+
+  <p>
+    Excavators uncovered ritual chambers, inscriptions, fresco fragments, and evidence of ceremonial
+    activity associated with Mithraism, one of the most enigmatic religious traditions of the Roman
+    Empire. Membership within the cult was restricted to initiates, and surviving historical records
+    concerning its rites remain fragmentary. As a result, archaeological discoveries from the site
+    became essential sources for reconstructing aspects of Mithraic belief and practice.
+  </p>
+
+  <div class="expedition-label">
+    <div class="main">ARCHAEOLOGICAL EXPEDITION DOSSIER</div>
+    <div class="sub">ROME — SUBTERRANEAN CULT SITE RECOVERY</div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>DATE</span><div>1934–1935</div></div>
+    <div class="data-cell"><span>LOCATION</span><div>AVENTINE HILL, ROME</div></div>
+    <div class="data-cell"><span>TYPE</span><div>ARCHAEOLOGICAL EXPEDITION</div></div>
+    <div class="data-cell"><span>SUBJECT</span><div>MITHRAIC MYSTERY CULT</div></div>
+    <div class="data-cell"><span>DISCOVERY</span><div>UNDERGROUND TEMPLE</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>OCCULT HISTORY DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    The excavations revealed a ceremonial sanctuary constructed to resemble a sacred cave, a defining
+    architectural feature of Mithraic worship. Decorative frescoes recovered from the structure
+    included references to initiation grades, ritual feasting, and symbolic journeys through cosmic
+    hierarchies associated with Mithraic doctrine. Several inscriptions identified ranks held by
+    initiates within the cult, providing rare evidence for the internal organization of the community.
+  </p>
+
+  <p>
+    Mithraism flourished throughout the Roman Empire between the first and fourth centuries CE,
+    attracting soldiers, merchants, administrators, and other members of Roman society. Unlike public
+    civic religions, Mithraic ceremonies were conducted within enclosed sanctuaries accessible only
+    to initiates. This secrecy has contributed substantially to modern fascination with the cult and
+    has left many aspects of its beliefs open to scholarly interpretation.
+  </p>
+
+  <p>
+    The Santa Prisca expedition remains one of the most significant investigations of a Mithraic
+    sanctuary ever undertaken. Archaeologists documented architectural features, ritual spaces, and
+    painted iconography that helped establish comparative frameworks for the study of Mithraea
+    discovered elsewhere throughout Europe, North Africa, and the Near East.
+  </p>
+
+  <p>
+    NOTE: The archive catalogs the Santa Prisca expedition as a major recovery event in the study of
+    ancient esoteric traditions. While modern historians interpret the site through archaeological and
+    religious scholarship, the underground temple continues to be associated with themes of hidden
+    knowledge, initiation, symbolic transformation, and the secret ceremonial life of the Roman world.
+  </p>
+</section>
+
+<!-- ENTRY 0011 -->
+
+<section class="entry" id="entry-0011">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0011</span>
+    <span class="entry-type">CONTEMPORARY TAROT INDEX</span>
+  </div>
+  <h2>Stitch Rabbit Tarot</h2>
+
+  <p>
+    The Stitch Rabbit Tarot is a contemporary esoteric tarot deck attributed to the artist i-neu.
+    The work is characterized by soft surreal iconography centered on rabbit figures and textile-like
+    visual motifs, evoking themes of mending, fragmentation, and symbolic reconstruction through
+    handcrafted aesthetic language.
+  </p>
+
+  <p>
+    Positioned within modern independent tarot illustration practices, the deck blends dreamlike
+    character design with a tactile, stitched visual sensibility. Its imagery suggests a liminal
+    narrative structure where familiar archetypes are reinterpreted through fabric, thread, and
+    collage-inspired composition rather than traditional occult illustration frameworks.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/Stitch_Rabbit.jpg" alt="Stitch Rabbit Tarot by i-neu cover">
+    <div>
+      <div class="plate-caption">CONTEMPORARY TAROT INDEX</div>
+      <div class="plate-title">Stitch Rabbit Tarot</div>
+      <div class="plate-description">ARTIST PUBLICATION — I-NEU</div>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>CONTEMPORARY TAROT DECK</div></div>
+    <div class="data-cell"><span>ARTIST</span><div>I-NEU</div></div>
+    <div class="data-cell"><span>ORIGIN</span><div>CONTEMPORARY / INDEPENDENT</div></div>
+    <div class="data-cell"><span>STYLE</span><div>TEXTILE / SURREAL ICONOGRAPHY</div></div>
+    <div class="data-cell"><span>STATUS</span><div>MODERN ART DECK</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>TAROT DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    NOTE: The Stitch Rabbit Tarot is catalogued as a contemporary illustrative tarot system
+    emphasizing textile aesthetics and symbolic fragmentation. The archive treats it as a modern
+    interpretive deck rather than a historically derived occult reconstruction.
+  </p>
+</section>
+
+<!-- ENTRY 0010 -->
+
+<section class="entry" id="entry-0010">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0010</span>
+    <span class="entry-type">HERMETIC TEXT INDEX</span>
+  </div>
+  <h2>Lumen de Lumine</h2>
+
+  <p>
+    Lumen de Lumine (“Light from Light”) is a hermetic title traditionally associated with
+    alchemical and metaphysical writings concerning emanation, divine illumination, and the
+    unfolding of hidden knowledge through progressive stages of inner revelation.
+    Within the archive, it is treated as a symbolic text rather than a single fixed historical edition.
+  </p>
+
+  <p>
+    Interpretations of the phrase span multiple esoteric traditions, where “light” functions as both
+    a metaphysical principle and a structural metaphor for consciousness, creation, and transformation.
+    The entry is catalogued as part of a broader lineage of allegorical works concerned with
+    ascent, purification, and the transmission of concealed wisdom.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/lumendelumineorn00vaug.jpg" alt="Lumen de Lumine archive cover">
+    <div>
+      <div class="plate-caption">HERMETIC TEXT INDEX</div>
+      <div class="plate-title">Lumen de Lumine</div>
+      <div class="plate-description">SYMBOLIC ALCHEMICAL TREATISE — LIGHT EMANATION DOCTRINE</div>
+      <a class="plate-link" href="https://archive.org/details/lumendelumineorn00vaug/mode/2up" target="_blank" rel="noopener noreferrer">OPEN INTERNET ARCHIVE TEXT ↗</a>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>HERMETIC / ALCHEMICAL TEXT</div></div>
+    <div class="data-cell"><span>ATTRIBUTION</span><div>THOMAS VAUGHAN (EUGENIUS PHILALETHES)</div></div>
+    <div class="data-cell"><span>THEME</span><div>EMANATION OF LIGHT</div></div>
+    <div class="data-cell"><span>STATUS</span><div>PUBLIC DOMAIN DIGITAL FACSIMILE</div></div>
+    <div class="data-cell"><span>FORMAT</span><div>ALLEGORICAL TREATISE</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>MYSTICAL DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    NOTE: This entry references the digitized Internet Archive facsimile of Thomas Vaughan’s
+    1651 alchemical work. The linked edition preserves scanned pages of the original publication
+    and is provided as a complete historical reference copy.
+  </p>
+</section>
+
+<!-- ENTRY 0009 -->
+
+<section class="entry" id="entry-0009">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0009</span>
+    <span class="entry-type">HISTORICAL TRIBUNAL DOSSIER</span>
+  </div>
+  <h2>Trial of the Knights Templar</h2>
+
+  <p>
+    The Trial of the Knights Templar was a judicial and ecclesiastical proceeding initiated in 1307
+    following the mass arrest of members of the Knights Templar by King Philip IV of France. The order,
+    originally established during the Crusades as a military and religious institution, was accused of
+    heresy, idolatry, blasphemy, and participation in secret initiation rites alleged to have occurred
+    within the organization.
+  </p>
+
+  <p>
+    Investigations and interrogations were conducted across multiple territories, with numerous
+    confessions obtained under coercive conditions. Allegations included the denial of Christ,
+    ritualized acts during initiation ceremonies, and the veneration of unidentified symbolic figures.
+    Despite extensive proceedings, material evidence supporting many of the accusations remained
+    disputed. The trials ultimately resulted in the dissolution of the order by Pope Clement V in 1312.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/A-medieval-picture-of-burning-execution.jpg" alt="Execution of Jacques de Molay">
+    <div>
+      <div class="plate-caption">HISTORICAL TRIBUNAL DOSSIER</div>
+      <div class="plate-title">Trial of the Templars</div>
+      <div class="plate-description">FRANCE — 1307–1314</div>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>DATE</span><div>1307–1314</div></div>
+    <div class="data-cell"><span>LOCATION</span><div>KINGDOM OF FRANCE</div></div>
+    <div class="data-cell"><span>TYPE</span><div>ECCLESIASTICAL TRIAL</div></div>
+    <div class="data-cell"><span>ORDER</span><div>KNIGHTS TEMPLAR</div></div>
+    <div class="data-cell"><span>PRIMARY ACTOR</span><div>PHILIP IV</div></div>
+    <div class="data-cell"><span>STATUS</span><div>ORDER DISSOLVED</div></div>
+  </div>
+
+  <p>
+    NOTE: The proceedings became one of the most influential judicial actions of the medieval period.
+    While modern scholarship generally interprets the accusations through political, financial, and
+    institutional contexts, the trial contributed substantially to later legends concerning hidden
+    Templar knowledge, secret rites, occult traditions, and esoteric successor organizations.
+  </p>
+</section>
+
+<!-- ENTRY 0008 -->
+
+<section class="entry" id="entry-0008">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0008</span>
+    <span class="entry-type">DIGITAL TAROT ARCHIVE</span>
+  </div>
+  <h2>Fukoumori Upscaled Tarot Cards</h2>
+
+  <p>
+    The Fukoumori Upscaled Tarot Cards are a reconstructed digital archive derived from the tarot
+    illustrations of the artist Fukoumori. The collection consists of enhanced reproductions created
+    through modern image restoration and upscaling techniques, preserving visual details that are
+    often lost in compressed online distributions and secondary repostings.
+  </p>
+
+  <p>
+    The archive functions as a preservation project rather than an original publication. By assembling
+    and restoring dispersed card imagery, the collection provides a consolidated visual record of
+    Fukoumori's distinctive tarot interpretations, characterized by atmospheric compositions, symbolic
+    figures, and contemporary fantasy-influenced iconography.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/FUKOUMORI%20UPSCALED%20Tarot%20Cards%20-%20The%20Fool%20and%20The%20Tower%20Waifu2X.jpg" alt="Fukoumori Upscaled Tarot Cards archive cover">
+    <div>
+      <div class="plate-caption">DIGITAL TAROT ARCHIVE</div>
+      <div class="plate-title">Fukoumori Upscaled Tarot</div>
+      <div class="plate-description">RECONSTRUCTED IMAGE COLLECTION — FUKOUMORI</div>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>TAROT CARD COLLECTION</div></div>
+    <div class="data-cell"><span>ARTIST</span><div>FUKOUMORI</div></div>
+    <div class="data-cell"><span>FORMAT</span><div>UPSCALED DIGITAL ARCHIVE</div></div>
+    <div class="data-cell"><span>STATUS</span><div>RECONSTRUCTED VISUAL RECORD</div></div>
+    <div class="data-cell"><span>SOURCE</span><div>DISTRIBUTED ONLINE IMAGERY</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>TAROT DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    NOTE: This entry catalogs an upscaled preservation archive of tarot illustrations attributed
+    to Fukoumori. The collection is treated as a reconstructed visual repository assembled from
+    circulating digital images rather than a single formally published deck edition. Restoration
+    and enhancement processes were employed to improve legibility and preserve artwork details.
+  </p>
+</section>
+
+<!-- ENTRY 0007 -->
+
+<section class="entry" id="entry-0007">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0007</span>
+    <span class="entry-type">VISIONARY ART INDEX</span>
+  </div>
+  <h2>Sun Angel</h2>
+
+  <p>
+    Sun Angel is a visionary painting by Natalia Gerasimenko, an artist associated with contemporary
+    symbolic and spiritually oriented visual work. The piece centers on an angelic solar figure,
+    rendered through luminous tonal gradients and ethereal composition, evoking themes of illumination,
+    transcendence, and metaphysical presence.
+  </p>
+
+  <p>
+    The work is situated within modern visionary art practices where celestial archetypes are used as
+    vehicles for introspective and symbolic interpretation. Sun Angel emphasizes radiant light as a
+    structural and thematic element, constructing a visual language aligned with mystical and
+    archetypal traditions rather than narrative representation.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/painting/sun_angel.jpg" alt="Sun Angel by Natalia Gerasimenko">
+    <div>
+      <div class="plate-caption">VISIONARY ART INDEX</div>
+      <div class="plate-title">Sun Angel</div>
+      <div class="plate-description">CONTEMPORARY VISIONARY PAINTING — NATALIA GERASIMENKO</div>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>VISIONARY PAINTING</div></div>
+    <div class="data-cell"><span>ARTIST</span><div>NATALIA GERASIMENKO</div></div>
+    <div class="data-cell"><span>SUBJECT</span><div>ANGELIC / SOLAR FIGURE</div></div>
+    <div class="data-cell"><span>THEME</span><div>SOLAR ILLUMINATION</div></div>
+    <div class="data-cell"><span>STATUS</span><div>CONTEMPORARY ARTWORK</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>VISIONARY DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    NOTE: This entry records Sun Angel as a contemporary visionary artwork emphasizing symbolic
+    celestial imagery. The painting is catalogued within the archive as a modern esoteric visual
+    study of light, form, and archetypal angelic presence.
+  </p>
+</section>
+
+<!-- ENTRY 0006 -->
+
+<section class="entry" id="entry-0006">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0006</span>
+    <span class="entry-type">CONTEMPORARY TAROT INDEX</span>
+  </div>
+  <h2>Slumberland Tarot</h2>
+
+  <p>
+    The Slumberland Tarot is a contemporary esoteric tarot deck attributed to the Korean artist Hemon.
+    The work is associated with dreamlike visual languages, blending surreal illustration traditions
+    with modern occult reinterpretation. It is often described as a liminal tarot system centered on
+    subconscious landscapes, symbolic thresholds, and fragmented narrative imagery.
+  </p>
+
+  <p>
+    Unlike reconstructed historical decks preserved through archival fragments, the Slumberland Tarot
+    exists primarily as a modern artistic publication. Its circulation is tied to illustrated editions
+    and collector prints rather than manuscript transmission, positioning it within contemporary
+    global tarot design culture emerging from East Asian independent art scenes.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/slumberland.jpg" alt="Slumberland Tarot by Hemon cover">
+    <div>
+      <div class="plate-caption">CONTEMPORARY TAROT INDEX</div>
+      <div class="plate-title">Slumberland Tarot</div>
+      <div class="plate-description">ARTIST PUBLICATION — HE MON (KOREA)</div>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>CONTEMPORARY TAROT DECK</div></div>
+    <div class="data-cell"><span>ARTIST</span><div>HEMON</div></div>
+    <div class="data-cell"><span>ORIGIN</span><div>SOUTH KOREA</div></div>
+    <div class="data-cell"><span>STYLE</span><div>SURREAL / DREAM ICONOGRAPHY</div></div>
+    <div class="data-cell"><span>STATUS</span><div>MODERN ART DECK</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>ILLUSTRATED TAROT SYSTEM</div></div>
+  </div>
+
+  <p>
+    NOTE: The Slumberland Tarot is treated in this archive as a contemporary artistic tarot system.
+    Its structure and imagery are defined by modern illustration practice rather than historical
+    esoteric reconstruction, emphasizing subjective dream logic and visual symbolism.
+  </p>
+</section>
+
+<!-- ENTRY 0005 -->
+
+<section class="entry" id="entry-0005">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0005</span>
+    <span class="entry-type">HERMETIC DOSSIER FILE</span>
+  </div>
+  <h2>The Text of Alchemy and the Green Dream</h2>
+
+  <p>
+    The Text of Alchemy and the Green Dream is an alchemical treatise preserved within the Western hermetic tradition and traditionally associated with Bernard of Treviso. The work combines direct discussion of alchemical principles with a visionary allegorical narrative in which symbolic figures, crystalline architecture, and enigmatic names serve as vehicles for communicating concealed philosophical concepts.
+  </p>
+
+  <p>
+    The text is notable for its dual structure. The first portion discusses the nature of transformation, perfection, and the Philosopher's Stone, while the Green Dream presents these themes through a symbolic dream vision. Because of its layered imagery, the work has been interpreted as a guide to laboratory alchemy, a spiritual allegory, and a philosophical meditation on the hidden operations of nature.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/411SBQILnsL._SY445_SX342_ML2_.jpg" alt="The Text of Alchemy and the Green Dream cover">
+    <div>
+      <div class="plate-caption">FULL TEXT ARCHIVE</div>
+      <div class="plate-title">The Green Dream</div>
+      <div class="plate-description">ALCHEMICAL TREATISE — BERNARD OF TREVISO (TRAD.)</div>
+      <a class="plate-link" href="https://www.alchemy-texts.com/book/the-text-of-alchemy-and-the-green-dream-full/" target="_blank" rel="noopener noreferrer">OPEN TEXT ARCHIVE ↗</a>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>ATTRIBUTION</span><div>BERNARD OF TREVISO (TRAD.)</div></div>
+    <div class="data-cell"><span>DATE</span><div>EARLY MODERN PRINT TRADITION</div></div>
+    <div class="data-cell"><span>TYPE</span><div>ALCHEMICAL TREATISE</div></div>
+    <div class="data-cell"><span>SUBJECT</span><div>PHILOSOPHER'S STONE</div></div>
+    <div class="data-cell"><span>STRUCTURE</span><div>TREATISE + DREAM VISION</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>HERMETIC DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    NOTE: The Green Dream is regarded as one of the more symbolic dream narratives within alchemical literature. Its imagery of a jeweled giant, crystalline city, and hidden names has generated interpretations ranging from encoded laboratory processes to spiritual initiation and philosophical allegory. The archive catalogs the work as a hybrid alchemical and visionary document.
+  </p>
+</section>
+
+<!-- ENTRY 0004 -->
+
+<section class="entry" id="entry-0004">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0004</span>
+    <span class="entry-type">ESOTERIC TAROT DOSSIER</span>
+  </div>
+  <h2>Sirius Tarot</h2>
+
+  <p>
+    The Sirius Tarot is an esoteric tarot publication associated with late modern occult print culture and symbolic reconstruction traditions. Like many reconstructed decks, it circulates primarily through partial reproductions, cover scans, and secondary archival listings rather than a single standardized commercial edition.
+  </p>
+
+  <p>
+    The deck is frequently categorized within astrological and stellar-aligned tarot systems, with “Sirius” functioning as a symbolic reference to the fixed star Sirius in esoteric cosmology. Surviving material is largely limited to book cover scans and collector documentation rather than a complete digitized card set.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/Germany_Sirius.jpg" alt="Sirius Tarot cover image">
+    <div>
+      <div class="plate-caption">DOSSIER COVER IMAGE</div>
+      <div class="plate-title">Sirius Tarot</div>
+      <div class="plate-description">STELLAR-BASED OCCULT TAROT — PARTIAL ARCHIVAL RECORD</div>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>TAROT / ASTROLOGICAL CARD SYSTEM</div></div>
+    <div class="data-cell"><span>SYMBOLIC BASIS</span><div>SIRIUS FIXED STAR TRADITION</div></div>
+    <div class="data-cell"><span>STATUS</span><div>FRAGMENTARY / CIRCULATING PRINTS</div></div>
+    <div class="data-cell"><span>FORMAT</span><div>RECONSTRUCTED DECK DOCUMENTATION</div></div>
+    <div class="data-cell"><span>SOURCE MATERIAL</span><div>COVER SCANS / COLLECTOR ARCHIVES</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>ESOTERIC TAROT DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    NOTE: This entry is based on limited visual documentation. No complete standardized card index is currently held in the archive. The Sirius Tarot is treated as a distributed symbolic object rather than a fully preserved deck.
+  </p>
+</section>
+
+<!-- ENTRY 0003 -->
+
+<section class="entry" id="entry-0003">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0003</span>
+    <span class="entry-type">RECONSTRUCTED DOSSIER FILE</span>
+  </div>
+  <h2>Sinister Tarot <em>(Reconstructed Dossier)</em></h2>
+
+  <p>
+    The Sinister Tarot is a modern esoteric card system attributed to Christos Beest, associated with the Order of Nine Angles current. The deck diverges from standard tarot structure, consisting of a reduced arcana set and court classifications rather than the traditional 78-card format.
+  </p>
+
+  <p>
+    Surviving references to the deck exist in fragmented form across limited print editions, secondary reproductions, and scattered digital imagery. No single authoritative digital archive exists; instead, the deck is reconstructed through partial visual records and collector documentation.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/Sinister.jpg" alt="Sinister Tarot reconstructed dossier cover">
+    <div>
+      <div class="plate-caption">DOSSIER COVER IMAGE</div>
+      <div class="plate-title">Sinister Tarot</div>
+      <div class="plate-description">SCATTERED ARCHIVAL MATERIAL — NO CENTRALIZED FILE</div>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>TYPE</span><div>TAROT / OCCULT CARD SYSTEM</div></div>
+    <div class="data-cell"><span>STRUCTURE</span><div>34-CARD REDUCED ARCANA</div></div>
+    <div class="data-cell"><span>ATTRIBUTION</span><div>CHRISTOS BEEST</div></div>
+    <div class="data-cell"><span>AFFILIATION</span><div>ORDER OF NINE ANGLES (CIRCLE)</div></div>
+    <div class="data-cell"><span>STATUS</span><div>DISTRIBUTED / FRAGMENTARY</div></div>
+    <div class="data-cell"><span>CLASSIFICATION</span><div>RECONSTRUCTED DOSSIER FILE</div></div>
+  </div>
+
+  <p>
+    NOTE: This entry does not represent a complete or canonical publication. The Sinister Tarot survives only through partial reproductions and secondary references. The archive treats it as a distributed artifact rather than a singular recoverable deck.
+  </p>
+</section>
+
+<!-- ENTRY 0002 -->
+
+<section class="entry" id="entry-0002">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0002</span>
+    <span class="entry-type">MANUSCRIPT GALLERY INDEX</span>
+  </div>
+  <h2>Clavis Artis</h2>
+
+  <p>
+    Clavis Artis is an illustrated alchemical manuscript preserved in several eighteenth-century copies, the most widely known being the Trieste manuscript (Ms-2-27) held in the Biblioteca Civica Attilio Hortis. The work is attributed pseudonymously to “Zoroaster” and consists of a sequence of richly illustrated folios depicting symbolic transformations, celestial figures, and allegorical alchemical processes rooted in early modern European hermetic traditions.
+  </p>
+
+  <p>
+    The archive entry is compiled from digitized manuscript folios available through the Wikimedia Commons collection, which hosts scanned pages from the surviving manuscript volumes. These images provide access to the visual structure of the original codex, including its layered symbolic diagrams and instructional sequences.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/images.jpg" alt="Clavis Artis manuscript folio">
+    <div>
+      <div class="plate-caption">MANUSCRIPT GALLERY INDEX</div>
+      <div class="plate-title">Clavis Artis</div>
+      <div class="plate-description">ILLUSTRATED ALCHEMICAL MANUSCRIPT</div>
+      <a class="plate-link" href="https://commons.wikimedia.org/wiki/Clavis_Artis" target="_blank" rel="noopener noreferrer">OPEN WIKIMEDIA ARCHIVE ↗</a>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>ATTRIBUTION</span><div>PSEUDO-ZOROASTER</div></div>
+    <div class="data-cell"><span>DATE</span><div>c. 1700–1738</div></div>
+    <div class="data-cell"><span>LANGUAGE</span><div>GERMAN</div></div>
+    <div class="data-cell"><span>TYPE</span><div>ALCHEMICAL MANUSCRIPT</div></div>
+    <div class="data-cell"><span>SOURCE</span><div>WIKIMEDIA COMMONS</div></div>
+    <div class="data-cell"><span>MATERIAL</span><div>TRIESTE MS-2-27</div></div>
+  </div>
+
+  <p>
+    NOTE: This entry references digitized manuscript folios rather than a single codex file. The Clavis Artis tradition survives through illustrated scans, which collectively reconstruct the visual and symbolic structure of the original manuscript. Users are directed to the Wikimedia Commons archive for full folio access.
+  </p>
+</section>
+
+<!-- ENTRY 0001 -->
+
+<section class="entry" id="entry-0001">
+  <div class="entry-top">
+    <span class="entry-number">ARCHIVE ENTRY / 0001</span>
+    <span class="entry-type">DEMONOLOGICAL CATALOG</span>
+  </div>
+  <h2>Pseudomonarchia Daemonum</h2>
+
+  <p>
+    A 16th-century Latin catalog of demonic figures attributed to Johann Weyer (1563). This text functions as an early modern classification system of infernal names, later influencing the Ars Goetia tradition in the Lemegeton cycle.
+  </p>
+
+  <div class="plate">
+    <img class="plate-image" src="https://raw.githubusercontent.com/axaxayacatl/blacksignal/refs/heads/main/book%20covers/71j7KLzAp-L._AC_UF1000%2C1000_QL80_.jpg" alt="Pseudomonarchia Daemonum cover">
+    <div>
+      <div class="plate-caption">READABLE FILE</div>
+      <div class="plate-title">Pseudomonarchia Daemonum</div>
+      <div class="plate-description">JOHANN WEYER — 1563</div>
+      <a class="plate-link" href="https://www.esotericarchives.com/solomon/weyer.htm" target="_blank" rel="noopener noreferrer">OPEN TEXT ARCHIVE ↗</a>
+    </div>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-cell"><span>AUTHOR</span><div>JOHANN WEYER</div></div>
+    <div class="data-cell"><span>DATE</span><div>1563</div></div>
+    <div class="data-cell"><span>LANGUAGE</span><div>LATIN</div></div>
+    <div class="data-cell"><span>TYPE</span><div>DEMONOLOGICAL CATALOG</div></div>
+    <div class="data-cell"><span>SOURCE</span><div>ESOTERIC-ARCHIVES ARCHIVE</div></div>
+    <div class="data-cell"><span>ACCESS</span><div>PSEUDOMONARCHIA DAEMONUM</div></div>
+  </div>
+
+  <p>
+    NOTE: This document is primarily a descriptive taxonomy of named entities within early modern European demonological thought.
+  </p>
 </section>
 
 </main>
+</div>
 
-<footer>
-  BLACK SIGNAL SURVEILLANCE INSTITUTE<br>
-  HISTORICAL DEMONOLOGY / RELIGIOUS HISTORY / MATERIAL CULTURE<br>
-  ARCHIVAL INTERFACE VERSION 0.3.0<br>
-  <span style="color:var(--red)">END OF TRANSMISSION // BSI</span>
+<footer class="footer">
+  <div class="footer-mark">B.S.S.I.</div>
+  <p>
+    BLACK SIGNAL SURVEILLANCE INSTITUTE<br>
+    NOCTURNE COLLECTION / HISTORICAL RESEARCH ARCHIVE<br>
+    END OF INDEX — 0001 / 0019
+  </p>
 </footer>
 
-<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  ↑ TOP
-</button>
-
-<div id="imageModal" role="dialog" aria-modal="true" aria-label="Image viewer">
-  <button onclick="closeImage()">CLOSE [X]</button>
-  <img id="modalImage" src="" alt="">
+<div class="lightbox" id="lightbox" aria-label="Expanded archive image">
+  <span class="lightbox-close">×</span>
+  <img src="" alt="Expanded archive photograph" id="lightboxImage">
 </div>
 
 <script>
-const records = [...document.querySelectorAll(".record")];
-const searchInput = document.getElementById("searchInput");
-const resultCount = document.getElementById("resultCount");
-const emptyState = document.getElementById("emptyState");
-let activeFilter = "all";
+/* SIGIL GENERATOR */
 
-function updateStats() {
-  document.getElementById("totalRecords").textContent =
-    String(records.length).padStart(4, "0");
+const sigil = document.getElementById("sigilText");
+const glyphs = ["⟡", "⟢", "⟣", "⟠", "⟤", "⟥", "⟊", "⟐", "⟟"];
 
-  document.getElementById("totalDepartments").textContent =
-    String(document.querySelectorAll(".department").length).padStart(4, "0");
-}
+function mutateSigil() {
+  let output = "";
+  const length = 3 + Math.floor(Math.random() * 5);
 
-function filterRecords() {
-  const query = searchInput.value.toLowerCase().trim();
-  let visible = 0;
-
-  records.forEach(record => {
-    const searchable = (
-      record.innerText + " " +
-      record.dataset.tags + " " +
-      record.dataset.id + " " +
-      record.dataset.category
-    ).toLowerCase();
-
-    const matchesQuery = searchable.includes(query);
-    const categories = record.dataset.category.split(/\s+/);
-    const matchesFilter =
-      activeFilter === "all" || categories.includes(activeFilter);
-
-    const show = matchesQuery && matchesFilter;
-    record.hidden = !show;
-    if (show) visible++;
-  });
-
-  resultCount.textContent =
-    `QUERY COMPLETE // ${String(visible).padStart(4,"0")} RECORD(S) FOUND`;
-
-  emptyState.hidden = visible !== 0;
-}
-
-searchInput.addEventListener("input", filterRecords);
-
-document.getElementById("clearSearch").addEventListener("click", () => {
-  searchInput.value = "";
-  activeFilter = "all";
-  document.querySelectorAll(".filter").forEach(button => {
-    button.classList.toggle("active", button.dataset.filter === "all");
-  });
-  filterRecords();
-});
-
-document.querySelectorAll(".filter").forEach(button => {
-  button.addEventListener("click", () => {
-    activeFilter = button.dataset.filter;
-    document.querySelectorAll(".filter").forEach(item => {
-      item.classList.toggle("active", item === button);
-    });
-    filterRecords();
-  });
-});
-
-document.querySelectorAll(".department").forEach(department => {
-  department.addEventListener("click", () => {
-    activeFilter = department.dataset.department;
-    searchInput.value = "";
-    document.querySelectorAll(".filter").forEach(button => {
-      button.classList.toggle("active",
-        button.dataset.filter === activeFilter);
-    });
-    filterRecords();
-    document.getElementById("terminal").scrollIntoView({
-      behavior: "smooth"
-    });
-  });
-});
-
-function showRecord(id) {
-  const record = document.getElementById(id);
-  if (!record) return;
-
-  record.hidden = false;
-  record.scrollIntoView({behavior:"smooth", block:"center"});
-  record.style.borderColor = "var(--red)";
-  setTimeout(() => record.style.borderColor = "", 1800);
-}
-
-function related(id) {
-  const record = document.getElementById(id);
-  if (!record) return;
-
-  const category = record.dataset.category.split(/\s+/)[0];
-  const relatedRecords = records.filter(item =>
-    item !== record &&
-    item.dataset.category.split(/\s+/).includes(category)
-  );
-
-  const output = document.getElementById("relatedResult");
-
-  if (!relatedRecords.length) {
-    output.textContent = "NO DIRECT CLASSIFICATION MATCHES FOUND.";
-    return;
+  for (let i = 0; i < length; i++) {
+    output += glyphs[Math.floor(Math.random() * glyphs.length)] + " ";
   }
 
-  output.innerHTML = `<strong style="color:var(--red)">RELATED TO: ${
-    record.querySelector("h3").textContent
-  }</strong><br><br>` +
-    relatedRecords.map(item =>
-      `<button class="crossref" style="margin:4px" onclick="showRecord('${item.id}')">${
-        item.dataset.id
-      } // ${item.querySelector("h3").textContent}</button>`
-    ).join("");
+  sigil.textContent = output.trim();
 }
 
-document.getElementById("randomButton").addEventListener("click", () => {
-  const available = records.filter(record => !record.hidden);
-  if (!available.length) return;
+setInterval(mutateSigil, 1200);
+mutateSigil();
 
-  const selected = available[Math.floor(Math.random() * available.length)];
-  const output = document.getElementById("randomResult");
+/* ARCHIVE SEARCH */
 
-  output.innerHTML = `
-    <span style="color:var(--red)">SIGNAL ACQUIRED // ${selected.dataset.id}</span><br><br>
-    <strong style="color:var(--fg)">${selected.querySelector("h3").textContent}</strong><br>
-    ${selected.querySelector("p").textContent}<br><br>
-    <button onclick="showRecord('${selected.id}')">OPEN SELECTED DOSSIER</button>
-  `;
+const search = document.getElementById("archiveSearch");
+const entries = document.querySelectorAll(".entry");
+const resultCount = document.getElementById("resultCount");
+const noResults = document.getElementById("noResults");
+
+search.addEventListener("input", function () {
+  const query = this.value.toLowerCase().trim();
+  let visible = 0;
+
+  entries.forEach(entry => {
+    const content = entry.textContent.toLowerCase();
+    const matches = content.includes(query);
+
+    entry.style.display = matches ? "" : "none";
+
+    if (matches) visible++;
+  });
+
+  resultCount.textContent = visible + " RECORDS";
+  noResults.style.display = visible === 0 ? "block" : "none";
 });
 
-const sigils = ["⟡", "⌖", "⛧", "⟁", "✳", "⟐", "⊗", "☷", "⌬", "⸸"];
-document.getElementById("sigilText").addEventListener("click", () => {
-  const current = document.getElementById("sigilText").textContent;
-  const choices = sigils.filter(item => item !== current);
-  document.getElementById("sigilText").textContent =
-    choices[Math.floor(Math.random() * choices.length)];
+/* IMAGE LIGHTBOX */
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+
+document.querySelectorAll(".plate-image, .feature-image").forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+    lightbox.classList.add("open");
+  });
 });
 
-window.addEventListener("scroll", () => {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollable > 0 ? window.scrollY / scrollable * 100 : 0;
-  document.getElementById("progress").style.width = progress + "%";
-});
-
-function openImage(src, alt = "") {
-  const modal = document.getElementById("imageModal");
-  document.getElementById("modalImage").src = src;
-  document.getElementById("modalImage").alt = alt;
-  modal.classList.add("open");
-}
-
-function closeImage() {
-  document.getElementById("imageModal").classList.remove("open");
-  document.getElementById("modalImage").src = "";
-}
-
-document.getElementById("imageModal").addEventListener("click", event => {
-  if (event.target.id === "imageModal") closeImage();
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("open");
+  lightboxImage.src = "";
 });
 
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape") closeImage();
+  if (event.key === "Escape") {
+    lightbox.classList.remove("open");
+    lightboxImage.src = "";
+  }
 });
-
-updateStats();
-filterRecords();
 </script>
 
 </body>
